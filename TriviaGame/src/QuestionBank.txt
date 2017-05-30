@@ -1,0 +1,18 @@
+Who invented the Java programming language?
+James Gosling
+Bill Gates
+Brian Kernighan
+Dennis Ritchie
+A
+Which of these is NOT a programming language?
+Verilog
+Haskell
+Lisp
+Go 
+A
+Who won the FIFA Men's World Cup in 2014?
+Argentina
+Spain
+Italy
+Germany
+D 

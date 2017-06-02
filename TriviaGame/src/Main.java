@@ -31,15 +31,15 @@ public class Main {
 		FileReader questionFile = new FileReader ("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/QuestionBank.txt");	
 		BufferedReader reader = new BufferedReader(questionFile);
 	
-		
-	for (int j=0; j < size; j++){ // Read the fields of the question
+	// Read the fields of the question, and construct a new one	
+	for (int j=0; j < size; j++){ 
 			String q = reader.readLine();
 			String A = reader.readLine();
 			String B = reader.readLine();
 			String C = reader.readLine();
 			String D = reader.readLine();
 			String correct = reader.readLine();
-			questionList.add(new Question (q, A, B, C, D, correct)); // Construct the new question from the fields and add to the list
+			questionList.add(new Question (q, A, B, C, D, correct)); 
 	}
 	
 	

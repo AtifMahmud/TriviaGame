@@ -11,9 +11,9 @@
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.Random;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
 
 public class Main {
@@ -31,25 +31,29 @@ public class Main {
 		BufferedReader reader = new BufferedReader(questionFile);
 	
 		
-	for (int j=0; j < numQuestions; ++j){ // Read the fields of the question
-		
+	for (int j=0; j < numQuestions; j++){ // Read the fields of the question
 			String q = reader.readLine();
 			String A = reader.readLine();
 			String B = reader.readLine();
 			String C = reader.readLine();
 			String D = reader.readLine();
 			String correct = reader.readLine();
-	
 			questionList.add(new Question (q, A, B, C, D, correct)); // Construct the new question from the fields and add to the list
 	}
 	
 	
-	// Ask the questions, in a random order
-	for (int i=0; i < numQuestions; ++i){
-		//Random rand = new Random();   // Keep it here, to generate new number everytime
-		//int index = rand.nextInt(numQuestion);
-		Question.askQuestion(questionList.get(i)); // Ask a random indexed question
-		//questionList.remove(rand.nextInt(index)); // Remove it to prevent it being asked again
+	/* Ask the questions, in a random order
+	   Note: Faced a bug where I got out of bounds exception. It was because I didn't account for the fact that
+	   the ArrayList gets smaller everytime I remove and element.
+	*/
+	
+	for (int i=0; i < numQuestions; i++){
+		int size = numQuestions;
+		Random rand = new Random();   					// Keep it here, to generate new number everytime
+		int index = rand.nextInt(size);
+		Question.askQuestion(questionList.get(index));  // Ask a random indexed question
+		questionList.remove(index); 					// Remove it to prevent it being asked again
+		size--;                     					// Decrement it to account for size change after remove()
 	}
 }
 

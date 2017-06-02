@@ -22,43 +22,21 @@ public class Question {
 	}
 	
 	
-	public static void main (String [] args) throws Exception{
-	
-		
-			Question [] questionArray = new Question [150]; // An array of 150 Questions
-			FileReader questionFile = new FileReader ("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/QuestionBank.txt");	
-			BufferedReader reader = new BufferedReader(questionFile);
-		
-			
-		for (int j=0; j < 5; ++j){ // Read the fields of the question
-			
-				String q = reader.readLine();
-				String A = reader.readLine();
-				String B = reader.readLine();
-				String C = reader.readLine();
-				String D = reader.readLine();
-				String correct = reader.readLine();
-		
-				questionArray[j] = new Question (q, A, B, C, D, correct); // Construct the new question
-		}
-		
-		
-		
-		for (int i=0; i < 5; ++i){
-			askQuestion(questionArray[i]);
-		}
-}
 	
 public static void askQuestion(Question question){
+	
+	// Print out the question to the console
 	System.out.println(question.question);
 	System.out.println(question.OptionA);
 	System.out.println(question.OptionB);
 	System.out.println(question.OptionC);
 	System.out.println(question.OptionD);
 	
+	// Take in the user input
 	Scanner scan = new Scanner(System.in);
 	String userInput = scan.next();
 	
+	// Check if correct; if so, increment score
 	if(userInput.equals(question.correctOption)){
 		System.out.println("Correct!\n");
 		score++;
@@ -68,7 +46,7 @@ public static void askQuestion(Question question){
 		System.out.println("Wrong\n");
 	}
 	
-	System.out.printf("Score = %d\n\n", score );
+	System.out.printf("Score = %d\n\n", score );  // Print out the score
 }	
 }
 	

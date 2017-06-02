@@ -12,19 +12,26 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Random;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Main {
 	
 	public static void main (String [] args) throws Exception{
+		 final int numQuestions;
 		
-		Question [] questionArray = new Question [150]; // An array of 150 Questions
+		 // Prompt the user for number of questions
+		System.out.println("Hello, Welcome to Atif's TriviaGame. Please enter the number of questions you'd like to be asked. Choose a number between 1 and 5\n\n");
+		Scanner numScan = new Scanner(System.in);
+		numQuestions = numScan.nextInt();
+		
+		ArrayList <Question> questionList = new ArrayList<Question>(); // An array of 150 Questions
 		FileReader questionFile = new FileReader ("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/QuestionBank.txt");	
 		BufferedReader reader = new BufferedReader(questionFile);
 	
 		
-	for (int j=0; j < 5; ++j){ // Read the fields of the question
+	for (int j=0; j < numQuestions; ++j){ // Read the fields of the question
 		
 			String q = reader.readLine();
 			String A = reader.readLine();
@@ -33,17 +40,16 @@ public class Main {
 			String D = reader.readLine();
 			String correct = reader.readLine();
 	
-			questionArray[j] = new Question (q, A, B, C, D, correct); // Construct the new question from the fields
+			questionList.add(new Question (q, A, B, C, D, correct)); // Construct the new question from the fields and add to the list
 	}
 	
 	
 	// Ask the questions, in a random order
-	
-	
-	for (int i=0; i < 5; ++i){
-		Random rand = new Random();   // Keep it here, to generate new number everytime
-		Question.askQuestion(questionArray[rand.nextInt(5)]); // Ask a random indexed question
-		//questionArray = ArrayUtils.removeElement(questionArray, questionArray[rand.nextInt(5)]);
+	for (int i=0; i < numQuestions; ++i){
+		//Random rand = new Random();   // Keep it here, to generate new number everytime
+		//int index = rand.nextInt(numQuestion);
+		Question.askQuestion(questionList.get(i)); // Ask a random indexed question
+		//questionList.remove(rand.nextInt(index)); // Remove it to prevent it being asked again
 	}
 }
 

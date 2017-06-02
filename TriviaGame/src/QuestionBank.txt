@@ -28,4 +28,15 @@ Infinity
 -Infinity
 -1/12
 D
-
+Who is the founder of Facebook?
+Larry Page
+Steve Wozniak
+Mark Zuckerberg
+Jeff Bezos
+C
+Who won the ICC Cricket World Cup in 1975?
+West Indies
+India
+Australia
+England
+A 

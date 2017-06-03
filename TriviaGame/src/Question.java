@@ -36,6 +36,7 @@ public class Question {
 		Scanner scan = new Scanner(System.in);
 		String userInput = scan.next();
 		
+		
 		// Check if correct; if so, increment score
 		if(userInput.equals(question.correctOption)){
 			System.out.println("Correct!\n");

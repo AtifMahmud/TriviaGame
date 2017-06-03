@@ -14,7 +14,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
-
+import java.lang.Object;
+import java.io.*;
 
 public class Main {
 	
@@ -28,23 +29,33 @@ public class Main {
 		numQuestions = numScan.nextInt();
 		
 		ArrayList <Question> questionList = new ArrayList<Question>(); // An array of 150 Questions
-		FileReader questionFile = new FileReader ("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/QuestionBank.txt");	
-		BufferedReader reader = new BufferedReader(questionFile);
-	
-	// Read the fields of the question, and construct a new one	
-	for (int j=0; j < size; j++){ 
-			String q = reader.readLine();
-			String A = reader.readLine();
-			String B = reader.readLine();
-			String C = reader.readLine();
-			String D = reader.readLine();
-			String correct = reader.readLine();
-			questionList.add(new Question (q, A, B, C, D, correct)); 
-	}
-	
-	
+		
+		
+		// One case where we need the try-catch block is if the file doesn't exist
+		try {
+			FileReader questionFile = new FileReader ("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/QuestionBank.txt");	
+			BufferedReader reader = new BufferedReader(questionFile);
+		
+		// Read the fields of the question, and construct a new one	
+		for (int j=0; j < size; j++){ 
+				String q = reader.readLine();
+				String A = reader.readLine();
+				String B = reader.readLine();
+				String C = reader.readLine();
+				String D = reader.readLine();
+				String correct = reader.readLine();
+				questionList.add(new Question (q, A, B, C, D, correct)); 
+		}
+		
+	  }
+	  
+		catch (IOException e){
+			System.out.println("We've hit a problem. Please try again\n\n");
+			System.exit(0);            // Add this to prevent program from running further when we hit the exception
+		} 
+		
+		
 	/* 
-	 * Ask the questions, in a random order
 	 * Note: Faced a bug where I got out of bounds exception. It was because I didn't account for the fact that
 	 * the ArrayList gets smaller everytime I remove and element.
 	*/
@@ -58,5 +69,5 @@ public class Main {
 		size--;                     					// Decrement it to account for size change after remove()
 	}
 }
-
+	
 }

@@ -16,17 +16,23 @@ import java.util.Scanner;
 import java.util.Random;
 import java.lang.Object;
 import java.io.*;
+import java.lang.IndexOutOfBoundsException;
 
 public class Main {
 	
 	public static void main (String [] args) throws Exception{
-		 final int numQuestions;
 		 int size = 7;       // Number of questions in the file
+		 int numQuestions;
 		 
-		 // Prompt the user for number of questions
-		System.out.println("Hello, Welcome to Atif's TriviaGame. Please enter the number of questions you'd like to be asked. Choose a number between 1 and 5\n\n");
-		Scanner numScan = new Scanner(System.in);
-		numQuestions = numScan.nextInt();
+		 	// Prompt the user for number of questions
+		do{
+			System.out.println("Hello, Welcome to Atif's TriviaGame. Please enter the number of questions you'd like to be asked. Choose a number between 1 and 5\n\n");
+			Scanner numScan = new Scanner(System.in);
+			numQuestions = numScan.nextInt();
+		}
+		
+		while
+			(numQuestions < 1 || numQuestions > 5);
 		
 		ArrayList <Question> questionList = new ArrayList<Question>(); // An array of 150 Questions
 		
@@ -60,14 +66,22 @@ public class Main {
 	 * the ArrayList gets smaller everytime I remove and element.
 	*/
 	
+	try{
+		for (int i=0; i < numQuestions; i++){
+			Random rand = new Random();   					// Keep it here, to generate new number everytime
+			int index = rand.nextInt(size);                 // Select a number between [0, size): covers all questions
+			Question.askQuestion(questionList.get(index));  // Ask a random indexed question
+			questionList.remove(index); 					// Remove it to prevent it being asked again
+			size--;                     					// Decrement it to account for size change after remove()
+		}
+	}
 	
-	for (int i=0; i < numQuestions; i++){
-		Random rand = new Random();   					// Keep it here, to generate new number everytime
-		int index = rand.nextInt(size);                 // Select a number between [0, size): covers all questions
-		Question.askQuestion(questionList.get(index));  // Ask a random indexed question
-		questionList.remove(index); 					// Remove it to prevent it being asked again
-		size--;                     					// Decrement it to account for size change after remove()
+	catch(IllegalArgumentException e){
+		System.out.println("Cannot acces the question. MAybe your number was too big");
+		System.exit(0);
+	}
+		
 	}
 }
 	
-}
+

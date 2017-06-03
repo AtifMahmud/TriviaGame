@@ -42,17 +42,17 @@ public class Main {
 			FileReader questionFile = new FileReader ("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/QuestionBank.txt");	
 			BufferedReader reader = new BufferedReader(questionFile);
 		
-		// Read the fields of the question, and construct a new one	
-		for (int j=0; j < size; j++){ 
-				String q = reader.readLine();
-				String A = reader.readLine();
-				String B = reader.readLine();
-				String C = reader.readLine();
-				String D = reader.readLine();
-				String correct = reader.readLine();
-				questionList.add(new Question (q, A, B, C, D, correct)); 
-		}
-		
+			// Read the fields of the question, and construct a new one	
+			for (int j=0; j < size; j++){ 
+					String q = reader.readLine();
+					String A = reader.readLine();
+					String B = reader.readLine();
+					String C = reader.readLine();
+					String D = reader.readLine();
+					String correct = reader.readLine();
+					questionList.add(new Question (q, A, B, C, D, correct)); 
+			}
+			
 	  }
 	  
 		catch (IOException e){
@@ -66,7 +66,7 @@ public class Main {
 	 * the ArrayList gets smaller everytime I remove and element.
 	*/
 	
-	try{
+	
 		for (int i=0; i < numQuestions; i++){
 			Random rand = new Random();   					// Keep it here, to generate new number everytime
 			int index = rand.nextInt(size);                 // Select a number between [0, size): covers all questions
@@ -74,13 +74,7 @@ public class Main {
 			questionList.remove(index); 					// Remove it to prevent it being asked again
 			size--;                     					// Decrement it to account for size change after remove()
 		}
-	}
 	
-	catch(IllegalArgumentException e){
-		System.out.println("Cannot acces the question. MAybe your number was too big");
-		System.exit(0);
-	}
-		
 	}
 }
 	

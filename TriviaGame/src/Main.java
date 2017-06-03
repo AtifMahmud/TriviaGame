@@ -14,9 +14,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
-import java.lang.Object;
+
 import java.io.*;
-import java.lang.IndexOutOfBoundsException;
 
 public class Main {
 	
@@ -34,7 +33,7 @@ public class Main {
 		while
 			(numQuestions < 1 || numQuestions > 5);
 		
-		ArrayList <Question> questionList = new ArrayList<Question>(); // An array of 150 Questions
+		ArrayList <Question> questionList = new ArrayList<Question>();
 		
 		
 		// One case where we need the try-catch block is if the file doesn't exist
@@ -65,8 +64,7 @@ public class Main {
 	 * Note: Faced a bug where I got out of bounds exception. It was because I didn't account for the fact that
 	 * the ArrayList gets smaller everytime I remove and element.
 	*/
-	
-	
+		
 		for (int i=0; i < numQuestions; i++){
 			Random rand = new Random();   					// Keep it here, to generate new number everytime
 			int index = rand.nextInt(size);                 // Select a number between [0, size): covers all questions

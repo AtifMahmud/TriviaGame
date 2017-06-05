@@ -22,9 +22,12 @@ public class Question {
 	}
 	
 	public static void askQuestion(Question question){
-			
+		
 		// Show the question in a GUI
-		JOptionPane.showMessageDialog(null, question.question, "Atif's TriviaGame", JOptionPane.PLAIN_MESSAGE);
+		String toAsk = question.question + "\n" + "A) " + question.OptionA + "\n" + "B) " + question.OptionB 
+				+ "\n" + "C) " + question.OptionC +  "\n" + "D) " + question.OptionD;
+		JOptionPane QuestionPane = new JOptionPane();
+		QuestionPane.showMessageDialog(null, toAsk, "Atif's TriviaGame", JOptionPane.PLAIN_MESSAGE);
 		System.out.println(question.OptionA);
 		System.out.println(question.OptionB);
 		System.out.println(question.OptionC);

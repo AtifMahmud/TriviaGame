@@ -1,6 +1,7 @@
 import java.util.*;
 import java.io.*;
 import javax.swing.JOptionPane;
+import javax.swing.JButton;
 
 public class Question {
     public String question; 
@@ -26,12 +27,11 @@ public class Question {
 		// Show the question in a GUI
 		String toAsk = question.question + "\n" + "A) " + question.OptionA + "\n" + "B) " + question.OptionB 
 				+ "\n" + "C) " + question.OptionC +  "\n" + "D) " + question.OptionD;
+		JButton OptionA = new JButton("A"); 
 		JOptionPane QuestionPane = new JOptionPane();
 		QuestionPane.showMessageDialog(null, toAsk, "Atif's TriviaGame", JOptionPane.PLAIN_MESSAGE);
-		System.out.println(question.OptionA);
-		System.out.println(question.OptionB);
-		System.out.println(question.OptionC);
-		System.out.println(question.OptionD);
+	
+	
 		
 		// Take in the user input
 		Scanner scan = new Scanner(System.in);

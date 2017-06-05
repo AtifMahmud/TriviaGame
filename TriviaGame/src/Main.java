@@ -13,6 +13,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
 import java.util.Random;
 
 
@@ -24,16 +27,19 @@ public class Main {
 		 int size = 7;       // Number of questions in the file
 		 int numQuestions;
 		 
-		 	// Prompt the user for number of questions
-		do{
-			System.out.println("Hello, Welcome to Atif's TriviaGame. Please enter the number of questions you'd like to be asked. Choose a number between 1 and 5\n\n");
-			Scanner numScan = new Scanner(System.in);
-			numQuestions = numScan.nextInt();
-		}
-		
-		while
-			(numQuestions < 1 || numQuestions > 5);
-		
+		 try {
+			// Prompt the user for number of questions; use JOptionPane
+			do{
+				numQuestions = Integer.parseInt(JOptionPane.showInputDialog("Welcome to Atif's Game. Please enter number of questions you want to be asked."));
+			}
+			
+			while
+				(numQuestions < 1 || numQuestions > 5);
+		 }
+		 
+		 catch(NumberFormatException n){
+			 return;
+		 }
 		
 		ArrayList <Question> questionList = new ArrayList<Question>();
 		

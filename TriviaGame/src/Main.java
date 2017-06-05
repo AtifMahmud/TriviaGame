@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
 
+
 import java.io.*;
 
 public class Main {
@@ -32,6 +33,7 @@ public class Main {
 		
 		while
 			(numQuestions < 1 || numQuestions > 5);
+		
 		
 		ArrayList <Question> questionList = new ArrayList<Question>();
 		

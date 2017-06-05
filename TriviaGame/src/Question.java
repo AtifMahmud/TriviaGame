@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-
+import javax.swing.JOptionPane;
 
 public class Question {
     public String question; 
@@ -21,12 +21,10 @@ public class Question {
 		this.correctOption = correctOption;
 	}
 	
-	
-	
 	public static void askQuestion(Question question){
-	
-		// Print out the question to the console
-		System.out.println(question.question);
+			
+		// Show the question in a GUI
+		JOptionPane.showMessageDialog(null, question.question, "Atif's TriviaGame", JOptionPane.PLAIN_MESSAGE);
 		System.out.println(question.OptionA);
 		System.out.println(question.OptionB);
 		System.out.println(question.OptionC);
@@ -51,7 +49,3 @@ public class Question {
 	}	
 }
 	
-	
-
-	
-

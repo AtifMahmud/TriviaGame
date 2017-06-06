@@ -2,14 +2,15 @@ import java.util.*;
 import java.io.*;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 public class Question {
-    public String question; 
-	public String OptionA;
-	public String OptionB;
-	public String OptionC;
-	public String OptionD;
-	public String correctOption;
+    public static String question; 
+	public static String OptionA;
+	public static String OptionB;
+	public static String OptionC;
+	public static String OptionD;
+	public static String correctOption;
 	public static int score = 0;  // Keeps track of score 
 	
 	// Constructor for a new question
@@ -20,35 +21,25 @@ public class Question {
 		this.OptionC = OptionC;
 		this.OptionD = OptionD;
 		this.correctOption = correctOption;
+	
+		
 	}
+	
+	
 	
 	public static void askQuestion(Question question){
 		
 		// Show the question in a GUI
-		String toAsk = question.question + "\n" + "A) " + question.OptionA + "\n" + "B) " + question.OptionB 
-				+ "\n" + "C) " + question.OptionC +  "\n" + "D) " + question.OptionD;
+		GUI MyGUI = new GUI();
+		MyGUI.setSize(1500, 1500);
+		MyGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		MyGUI.setVisible(true);
 		JButton OptionA = new JButton("A"); 
 		JOptionPane QuestionPane = new JOptionPane();
-		QuestionPane.showMessageDialog(null, toAsk, "Atif's TriviaGame", JOptionPane.PLAIN_MESSAGE);
+		QuestionPane.showMessageDialog(null, question, "Atif's TriviaGame", JOptionPane.PLAIN_MESSAGE);
 	
 	
+	}
 		
-		// Take in the user input
-		Scanner scan = new Scanner(System.in);
-		String userInput = scan.next();
-		
-		
-		// Check if correct; if so, increment score
-		if(userInput.equals(question.correctOption)){
-			System.out.println("Correct!\n");
-			score++;
-		}
-		
-		else {
-			System.out.println("Wrong\n");
-		}
-		
-		System.out.printf("Score = %d\n\n", score );  // Print out the score
-	}	
 }
 	

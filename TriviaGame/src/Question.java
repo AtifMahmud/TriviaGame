@@ -35,8 +35,9 @@ public class Question {
 		MyGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		MyGUI.setVisible(true);
 		JButton OptionA = new JButton("A"); 
-		JOptionPane QuestionPane = new JOptionPane();
-		QuestionPane.showMessageDialog(null, question, "Atif's TriviaGame", JOptionPane.PLAIN_MESSAGE);
+		MyGUI.add(OptionA);
+		//JOptionPane QuestionPane = new JOptionPane();
+		//QuestionPane.showMessageDialog(null, question, "Atif's TriviaGame", JOptionPane.PLAIN_MESSAGE);
 	
 	
 	}

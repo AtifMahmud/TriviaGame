@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-
+import java.awt.Dimension;
 
 public class GUI extends JFrame {
 	
@@ -22,13 +22,21 @@ public class GUI extends JFrame {
 	public JButton D = new JButton(OptionD);
 	public JTextField Q = new JTextField(Question);
 	
-
+	
+	
+	
 	
 	public GUI(){
 		
 		super("Atif's TriviaGame");
 		setLayout(new FlowLayout());
-	
+		
+		Dimension d = new Dimension(100,300);
+		A.setPreferredSize(d);
+		B.setPreferredSize(d);
+		C.setPreferredSize(d);
+		D.setPreferredSize(d);
+		
 		add(A);
 		add(B);
 		add(C);

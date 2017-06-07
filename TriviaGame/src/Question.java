@@ -54,11 +54,7 @@ public class Question {
 		
 		// Set the position and size of the buttons
 		OptionA.setPreferredSize(d);
-	
-		
-		OptionB.setPreferredSize(d);
-	//	OptionB.setLocation(20, 20);
-		
+		OptionB.setPreferredSize(d);	
 		OptionC.setPreferredSize(d);
 		OptionD.setPreferredSize(d);
 			
@@ -70,11 +66,7 @@ public class Question {
 		MyGUI.add(OptionC);
 		MyGUI.add(OptionD);
 		
-		OptionA.setLocation(10, 10);
-		OptionB.setLocation(200,200);
-		OptionC.setLocation(50, 50);
-		OptionD.setLocation(1000,1000);
-		
+
 		
 	}
 		

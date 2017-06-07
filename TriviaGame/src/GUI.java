@@ -1,4 +1,4 @@
-import java.awt.FlowLayout;
+import javax.swing.BoxLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
@@ -28,8 +28,7 @@ public class GUI extends JFrame {
 	
 	public GUI(){
 		super("Atif's TriviaGame");
-		setLayout(new FlowLayout());
-		setVisible(true);
+		setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 	}
 	
 	

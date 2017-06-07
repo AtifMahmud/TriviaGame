@@ -27,22 +27,9 @@ public class GUI extends JFrame {
 	
 	
 	public GUI(){
-		
 		super("Atif's TriviaGame");
 		setLayout(new FlowLayout());
-		
-		Dimension d = new Dimension(100,300);
-		A.setPreferredSize(d);
-		B.setPreferredSize(d);
-		C.setPreferredSize(d);
-		D.setPreferredSize(d);
-		
-		add(A);
-		add(B);
-		add(C);
-		add(D);
-	    add(Q);
-	
+		setVisible(true);
 	}
 	
 	

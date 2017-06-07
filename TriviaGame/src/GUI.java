@@ -1,6 +1,6 @@
 import javax.swing.BoxLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -28,18 +28,20 @@ public class GUI extends JFrame {
 		setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 	
 		TheHandler handler = new TheHandler();
-		A.addActionListener(handler);
-		B.addActionListener(handler);
-		C.addActionListener(handler);
-		D.addActionListener(handler);
+		A.addMouseListener(handler);
+		B.addMouseListener(handler);
+		C.addMouseListener(handler);
+		D.addMouseListener(handler);
 	}
 	
 	
-	public class TheHandler implements ActionListener{
-		public void actionPerformed(ActionEvent event){
+	public class TheHandler implements MouseListener{
+		public void mousePressed(MouseClick event){
 			if(event.getSource().equals(A)){
 				JOptionPane.showMessageDialog(null, "Foobar");
 			}
 		}
+		
+		
 	}
 }

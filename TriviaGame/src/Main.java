@@ -63,10 +63,10 @@ public class Main {
 			
 	  }
 	  
-		catch (IOException e){
+	    catch (IOException e){
 			System.out.println("We've hit a problem. Please try again\n\n");
 			System.exit(0);            // Add this to prevent program from running further when we hit the exception
-		} 
+	  } 
 		
 		
 	/* 

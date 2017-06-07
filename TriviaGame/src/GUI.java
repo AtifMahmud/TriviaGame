@@ -1,5 +1,6 @@
 import javax.swing.BoxLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -36,12 +37,38 @@ public class GUI extends JFrame {
 	
 	
 	public class TheHandler implements MouseListener{
-		public void mousePressed(MouseClick event){
-			if(event.getSource().equals(A)){
-				JOptionPane.showMessageDialog(null, "Foobar");
-			}
+		
+		// Implementing the abstract methods: some of them are empty because we don't need them
+		
+		public void mouseClicked(MouseEvent event){
+				System.out.println("Clicked");
+				JOptionPane.showMessageDialog(null, "Clicked");
+			
 		}
 		
+		public void mousePressed(MouseEvent event){
+			System.out.println("Pressed");
+			JOptionPane.showMessageDialog(null, "Pressed");
+		
+		}
+		
+		public void mouseReleased(MouseEvent event){
+			System.out.println("Released");
+			JOptionPane.showMessageDialog(null, "Released");
+		
+		}
+		
+		public void mouseEntered(MouseEvent event){
+			System.out.println("Entered");
+			JOptionPane.showMessageDialog(null, "Entered");
+		
+		}
+		
+		public void mouseExited(MouseEvent event){
+			System.out.println("Exited");
+			JOptionPane.showMessageDialog(null, "Exited");
+		
+		}
 		
 	}
 }

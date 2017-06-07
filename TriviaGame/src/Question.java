@@ -15,6 +15,7 @@ public class Question {
 	public static String OptionD;
 	public static String correctOption;
 	public static int score = 0;  // Keeps track of score 
+	public GUI MyGUI;
 	
 	// Constructor for a new question
 	public Question (String question, String OptionA, String OptionB, String OptionC, String OptionD, String correctOption){
@@ -25,25 +26,17 @@ public class Question {
 		this.OptionD = OptionD;
 		this.correctOption = correctOption;
 	
-		
-	}
-	
-
-	public static void askQuestion(Question question){
-			
-	
-		// Set up the window
-		GUI MyGUI = new GUI();
+		MyGUI = new GUI();
 		MyGUI.setSize(1500, 1500);
 		MyGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		MyGUI.setVisible(true);
+		MyGUI.setVisible(false);
 		
 		// Set up the questions and buttons for the screen
-		JLabel QuestionLabel = new JLabel(question.question);
-		JButton OptionA = new JButton(question.OptionA); 
-		JButton OptionB = new JButton(question.OptionB);
-		JButton OptionC = new JButton(question.OptionC);
-		JButton OptionD = new JButton(question.OptionD);
+		JLabel QuestionLabel = new JLabel(Question.question);
+		JButton A = new JButton(Question.OptionA); 
+		JButton B = new JButton(Question.OptionB);
+		JButton C = new JButton(Question.OptionC);
+		JButton D = new JButton(Question.OptionD);
 
 		// Set the dimensions and the font fields
 		Dimension d = new Dimension(200, 100);
@@ -53,21 +46,24 @@ public class Question {
 		QuestionLabel.setFont(QuestionFont);;
 		
 		// Set the position and size of the buttons
-		OptionA.setPreferredSize(d);
-		OptionB.setPreferredSize(d);	
-		OptionC.setPreferredSize(d);
-		OptionD.setPreferredSize(d);
+		A.setPreferredSize(d);
+		B.setPreferredSize(d);	
+		C.setPreferredSize(d);
+		D.setPreferredSize(d);
 			
 				
 		// Add them to the screen
 		MyGUI.add(QuestionLabel);
-		MyGUI.add(OptionA);
-		MyGUI.add(OptionB);
-		MyGUI.add(OptionC);
-		MyGUI.add(OptionD);
-		
+		MyGUI.add(A);
+		MyGUI.add(B);
+		MyGUI.add(C);
+		MyGUI.add(D);
 
-		
+	}
+	
+
+	public static void askQuestion(Question question){	
+		question.MyGUI.setVisible(true);
 	}
 		
 }

@@ -64,6 +64,7 @@ public class Question {
 
 	public static void askQuestion(Question question){	
 		question.MyGUI.setVisible(true);
+		
 	}
 		
 }

@@ -23,14 +23,23 @@ public class GUI extends JFrame {
 	public JTextField Q = new JTextField(Question);
 	
 	
-	
-	
-	
 	public GUI(){
 		super("Atif's TriviaGame");
 		setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+	
+		TheHandler handler = new TheHandler();
+		A.addActionListener(handler);
+		B.addActionListener(handler);
+		C.addActionListener(handler);
+		D.addActionListener(handler);
 	}
 	
 	
-	
+	public class TheHandler implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+			if(event.getSource().equals(A)){
+				JOptionPane.showMessageDialog(null, "Foobar");
+			}
+		}
+	}
 }

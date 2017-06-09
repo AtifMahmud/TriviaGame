@@ -107,14 +107,12 @@ public class TheHandler implements MouseListener{
 		}
 		
 		public void mouseEntered(MouseEvent event){
-			System.out.println("Entered");
-			JOptionPane.showMessageDialog(null, "Entered");
+		
 		
 		}
 		
 		public void mouseExited(MouseEvent event){
-			System.out.println("Exited");
-			JOptionPane.showMessageDialog(null, "Exited");
+			
 		
 		}
 		

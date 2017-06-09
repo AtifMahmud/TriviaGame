@@ -9,32 +9,38 @@ import javax.swing.JTextField;
 import java.awt.Dimension;
 
 public class GUI extends JFrame {
-	
-	
+
 	public String Question;
 	public String OptionA;
 	public String OptionB;
 	public String OptionC;
 	public String OptionD;
+	public int gameScore;
 	
-	public JButton A = new JButton(OptionA);
-	public JButton B = new JButton(OptionB);
-	public JButton C = new JButton(OptionC);
-	public JButton D = new JButton(OptionD);
-	public JTextField Q = new JTextField(Question);
+	public JButton A;
+	public JButton B;
+	public JButton C;
+	public JButton D;
+	public JTextField Q;
+	public JTextField score = new JTextField(Integer.toString(gameScore));
 	
 	
-	public GUI(){
+	public  GUI(){
 		super("Atif's TriviaGame");
 		setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
-	
+		
+		A = new JButton();
+		B = new JButton();
+		C = new JButton();
+		D = new JButton();
+		
 		TheHandler handler = new TheHandler();
 		A.addMouseListener(handler);
 		B.addMouseListener(handler);
 		C.addMouseListener(handler);
 		D.addMouseListener(handler);
+		
 	}
-	
 	
 	public class TheHandler implements MouseListener{
 		

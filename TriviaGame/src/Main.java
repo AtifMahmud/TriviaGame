@@ -23,6 +23,8 @@ import java.io.*;
 
 public class Main {
 	
+	public static int score = 0;
+	
 	public static void main (String [] args) throws Exception{
 		 int size = 7;       // Number of questions in the file
 		 int numQuestions;

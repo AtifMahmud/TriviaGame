@@ -44,32 +44,36 @@ public class GUI extends JFrame {
 	
 	public class TheHandler implements MouseListener{
 		
-		// Implementing the abstract methods: some of them are empty because we don't need them
 		
+		@Override
 		public void mouseClicked(MouseEvent event){
 				System.out.println("Clicked");
 				JOptionPane.showMessageDialog(null, "Clicked");
 			
 		}
 		
+		@Override
 		public void mousePressed(MouseEvent event){
 			System.out.println("Pressed");
 			JOptionPane.showMessageDialog(null, "Pressed");
 		
 		}
 		
+		@Override
 		public void mouseReleased(MouseEvent event){
 			System.out.println("Released");
 			JOptionPane.showMessageDialog(null, "Released");
 		
 		}
 		
+		@Override
 		public void mouseEntered(MouseEvent event){
 			System.out.println("Entered");
 			JOptionPane.showMessageDialog(null, "Entered");
 		
 		}
 		
+		@Override
 		public void mouseExited(MouseEvent event){
 			System.out.println("Exited");
 			JOptionPane.showMessageDialog(null, "Exited");

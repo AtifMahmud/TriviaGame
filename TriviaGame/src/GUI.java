@@ -27,20 +27,11 @@ public class GUI extends JFrame {
 	
 	public  GUI(){
 		super("Atif's TriviaGame");
-		setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
-		
-		A = new JButton();
-		B = new JButton();
-		C = new JButton();
-		D = new JButton();
-		
-		TheHandler handler = new TheHandler();
-		A.addMouseListener(handler);
-		B.addMouseListener(handler);
-		C.addMouseListener(handler);
-		D.addMouseListener(handler);
-		
+		setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));	
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
+	
+	
 	
 	public class TheHandler implements MouseListener{
 		

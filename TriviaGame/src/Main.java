@@ -14,16 +14,16 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.util.Random;
-
-
+import java.awt.Dimension;
 import java.io.*;
 
 public class Main {
-	
 	public static int score = 0;
+
 	
 	public static void main (String [] args) throws Exception{
 		 int size = 7;       // Number of questions in the file
@@ -44,8 +44,9 @@ public class Main {
 			 return;
 		 }
 		
+		 
 		ArrayList <Question> questionList = new ArrayList<Question>();
-		
+		GUI MyGUI = new GUI();
 		
 		// One case where we need the try-catch block is if the file doesn't exist
 		try {
@@ -77,14 +78,16 @@ public class Main {
 	*/
 		
 		for (int i=0; i < numQuestions; i++){
+			MyGUI.repaint();
+			MyGUI.revalidate();
 			Random rand = new Random();   					// Keep it here, to generate new number everytime
 			int index = rand.nextInt(size);                 // Select a number between [0, size): covers all questions
-			Question.askQuestion(questionList.get(index));  // Ask a random indexed question
 			questionList.remove(index); 					// Remove it to prevent it being asked again
-			size--;                     					// Decrement it to account for size change after remove()
+			size--;                                         // Decrement it to account for size change after remove()
 		}
-	
+		
 	}
+	
 }
 	
 

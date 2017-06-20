@@ -13,19 +13,20 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import javax.swing.JLabel;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
-
 import java.util.Random;
 import java.awt.Dimension;
 import java.io.*;
 
-public class Main {
+public class Main extends JFrame {
 	public static int score = 0;
 
 	
-	public static void main (String [] args) throws Exception{
+	public static void main (String [] args)  throws Exception {
 		 int size = 7;       // Number of questions in the file
 		 int numQuestions;
 		 
@@ -44,10 +45,20 @@ public class Main {
 			 return;
 		 }
 		
-		 
-		ArrayList <Question> questionList = new ArrayList<Question>();
-		GUI MyGUI = new GUI();
+		// Set the dimensions
+		Dimension MainWindow    = new Dimension(1500, 1500); 
+		Dimension TextDimension = new Dimension(200, 300); 
 		
+		ArrayList <Question> questionList = new ArrayList<Question>();
+		Question ToAsk;
+		
+		GUI MyGUI = new GUI();
+		MyGUI.setSize(MainWindow);
+		MyGUI.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+ 		JTextField QuestionField;
+		JButton OptionA;
+ 		
 		// One case where we need the try-catch block is if the file doesn't exist
 		try {
 			FileReader questionFile = new FileReader ("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/QuestionBank.txt");	
@@ -78,14 +89,17 @@ public class Main {
 	*/
 		
 		for (int i=0; i < numQuestions; i++){
-			MyGUI.repaint();
-			MyGUI.revalidate();
 			Random rand = new Random();   					// Keep it here, to generate new number everytime
 			int index = rand.nextInt(size);                 // Select a number between [0, size): covers all questions
+			ToAsk = questionList.get(index);                // Select the question
+			QuestionField = new JTextField(ToAsk.question);
+			MyGUI.add(QuestionField);
+			OptionA = new JButton(ToAsk.OptionA);
+			MyGUI.add(OptionA);
 			questionList.remove(index); 					// Remove it to prevent it being asked again
 			size--;                                         // Decrement it to account for size change after remove()
-		}
-		
+			MyGUI.setVisible(true);
+		}	
 	}
 	
 }

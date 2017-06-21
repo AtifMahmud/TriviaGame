@@ -50,14 +50,14 @@ public class Main extends JFrame {
 		Dimension TextDimension = new Dimension(200, 300); 
 		
 		ArrayList <Question> questionList = new ArrayList<Question>();
-		Question ToAsk;
+		Question ToAsk = null;
 		
 		GUI MyGUI = new GUI();
 		MyGUI.setSize(MainWindow);
 		MyGUI.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
  		JTextField QuestionField;
-		JButton OptionA;
+		JButton OptionA = null;
  		
 		// One case where we need the try-catch block is if the file doesn't exist
 		try {
@@ -92,14 +92,18 @@ public class Main extends JFrame {
 			Random rand = new Random();   					// Keep it here, to generate new number everytime
 			int index = rand.nextInt(size);                 // Select a number between [0, size): covers all questions
 			ToAsk = questionList.get(index);                // Select the question
-			QuestionField = new JTextField(ToAsk.question);
-			MyGUI.add(QuestionField);
 			OptionA = new JButton(ToAsk.OptionA);
-			MyGUI.add(OptionA);
 			questionList.remove(index); 					// Remove it to prevent it being asked again
 			size--;                                         // Decrement it to account for size change after remove()
-			MyGUI.setVisible(true);
 		}	
+		
+		QuestionField = new JTextField(ToAsk.question);
+		MyGUI.add(QuestionField);
+		MyGUI.add(OptionA);
+		MyGUI.repaint();
+		MyGUI.revalidate();
+		MyGUI.setVisible(true);
+		
 	}
 	
 }

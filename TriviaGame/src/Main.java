@@ -18,9 +18,11 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import java.util.Random;
+import javax.swing.JPanel;
 import java.awt.Dimension;
+import java.util.Random;
 import java.io.*;
+import javax.swing.SwingUtilities;
 
 public class Main extends JFrame {
 	public static int score = 0;
@@ -45,20 +47,10 @@ public class Main extends JFrame {
 			 return;
 		 }
 		
-		// Set the dimensions
-		Dimension MainWindow    = new Dimension(1500, 1500); 
-		Dimension TextDimension = new Dimension(200, 300); 
 		
-		ArrayList <Question> questionList = new ArrayList<Question>();
+		ArrayList <JPanel> questionList = new ArrayList<JPanel>();
 		Question ToAsk = null;
 		
-		GUI MyGUI = new GUI();
-		MyGUI.setSize(MainWindow);
-		MyGUI.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
- 		JTextField QuestionField;
-		JButton OptionA = null;
- 		
 		// One case where we need the try-catch block is if the file doesn't exist
 		try {
 			FileReader questionFile = new FileReader ("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/QuestionBank.txt");	
@@ -66,13 +58,17 @@ public class Main extends JFrame {
 		
 			// Read the fields of the question, and construct a new one	
 			for (int j=0; j < size; j++){ 
-					String q = reader.readLine();
-					String A = reader.readLine();
-					String B = reader.readLine();
-					String C = reader.readLine();
-					String D = reader.readLine();
-					String correct = reader.readLine();
-					questionList.add(new Question (q, A, B, C, D, correct)); 
+					JTextField q = new JTextField(reader.readLine());
+					JButton A = new JButton(reader.readLine());
+					JButton B = new JButton(reader.readLine());
+					JButton C = new JButton(reader.readLine());
+					JButton D = new JButton(reader.readLine());
+				    String correct = reader.readLine();
+				    QuestionPanel AskPanel = new QuestionPanel (q, A, B, C, D, correct);
+				    AskPanel.add(q);
+				    q.setEditable(false);
+					questionList.add(AskPanel); 
+					
 			}
 			
 	  }
@@ -82,27 +78,21 @@ public class Main extends JFrame {
 			System.exit(0);            // Add this to prevent program from running further when we hit the exception
 	  } 
 		
+		Dimension FrameSize = new Dimension(500, 500);
+		JFrame Frame = new JFrame();
+		Frame.setSize(FrameSize);
+		Frame.add(questionList.get(0)); 
+		Frame.setVisible(true);
 		
-	/* 
-	 * Note: Faced a bug where I got out of bounds exception. It was because I didn't account for the fact that
-	 * the ArrayList gets smaller everytime I remove and element.
-	*/
 		
-		for (int i=0; i < numQuestions; i++){
-			Random rand = new Random();   					// Keep it here, to generate new number everytime
-			int index = rand.nextInt(size);                 // Select a number between [0, size): covers all questions
-			ToAsk = questionList.get(index);                // Select the question
-			OptionA = new JButton(ToAsk.OptionA);
-			questionList.remove(index); 					// Remove it to prevent it being asked again
-			size--;                                         // Decrement it to account for size change after remove()
-		}	
+		SwingUtilities.invokeLater(new Runnable(){
+			@Override
+			public void run(){
+				
+			}
+		});
 		
-		QuestionField = new JTextField(ToAsk.question);
-		MyGUI.add(QuestionField);
-		MyGUI.add(OptionA);
-		MyGUI.repaint();
-		MyGUI.revalidate();
-		MyGUI.setVisible(true);
+		
 		
 	}
 	

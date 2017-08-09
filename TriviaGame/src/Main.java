@@ -29,13 +29,16 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import javax.swing.SwingConstants;
+import javax.sound.sampled.*;
+import java.awt.Toolkit;
 
 public class Main extends JFrame {
+	
 	public static int score = 0;
-
 	
 	public static void main (String [] args)  throws Exception {
-		 int size = 7;       // Number of questions in the file
+		 int size = 9;       // Number of questions in the file
 		 int numQuestions;
 		 
 		 
@@ -83,29 +86,47 @@ public class Main extends JFrame {
 				    D = new JButton(reader.readLine());
 				    String correct = reader.readLine();
 				    QuestionPanel AskPanel = new QuestionPanel (q, A, B, C, D, correct);
+				    
 				    AskPanel.add(q);
 				    AskPanel.add(A);
 				    AskPanel.add(B);
 				    AskPanel.add(C);
 				    AskPanel.add(D);
-				    AskPanel.setLayout(new BoxLayout(AskPanel, BoxLayout.PAGE_AXIS));
+				    
 				    A.setSize(ButtonSize);
 				    B.setSize(ButtonSize);
 				    C.setSize(ButtonSize);
 				    D.setSize(ButtonSize);
+				    
 				    q.setEditable(false);
 					questionList.add(AskPanel);
 					ContentPanel.add(AskPanel, Integer.toString(j));
+					
 					A.addActionListener(new ActionListener(){
 						@Override
 						public void actionPerformed(ActionEvent a) {
+							if(AskPanel.correctOption.equals("A")){
+								score++;
+								Toolkit.getDefaultToolkit().beep();
+
+							}
 							card.show(ContentPanel, Integer.toString(k+1));
+
+				
 						}
 					});	
 
 					B.addActionListener(new ActionListener(){
 						@Override
 						public void actionPerformed(ActionEvent a) {
+							if(AskPanel.correctOption.equals("B")){
+								score++;
+							    JButton Score = new JButton("Score  =  " + Integer.toString(score));
+							    ContentPanel.add(Score);
+							    Score.setBounds(10,0,10,10);
+							    Score.setVisible(true);
+						
+							}
 							card.show(ContentPanel, Integer.toString(k+1));
 						}
 					});	
@@ -113,6 +134,14 @@ public class Main extends JFrame {
 					C.addActionListener(new ActionListener(){
 						@Override
 						public void actionPerformed(ActionEvent a) {
+							if(AskPanel.correctOption.equals("C")){
+								score++;
+							    JButton Score = new JButton("Score  =  " + Integer.toString(score));
+							    ContentPanel.add(Score);
+							    Score.setBounds(10,0,10,10);
+							    Score.setVisible(true);
+							  
+							}
 							card.show(ContentPanel, Integer.toString(k+1));
 						}
 					});	
@@ -120,42 +149,41 @@ public class Main extends JFrame {
 					D.addActionListener(new ActionListener(){
 						@Override
 						public void actionPerformed(ActionEvent a) {
+							if(AskPanel.correctOption.equals("D")){
+								score++;
+							    JButton Score = new JButton("Score  =  " + Integer.toString(score));
+							    ContentPanel.add(Score);
+							    Score.setBounds(10,0,10,10);
+							    Score.setVisible(true);
+							
+							}
 							card.show(ContentPanel, Integer.toString(k+1));
 						}
 					});
-					
-					
+
 			}
 		}
 	  
-			
-		
+
 	    catch (IOException e){
 			System.out.println("We've hit a problem. Please try again\n\n");
 			System.exit(0);            // Add this to prevent program from running further when we hit the exception
 	  } 
 		
+	
 		Frame.add(ContentPanel);
 		Frame.setSize(FrameSize);
 		Frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		Frame.setVisible(true);
 	
 		
-				
 		SwingUtilities.invokeLater(new Runnable(){
 				@Override
 				public void run(){
 					new Main();
 				}
 			});
-		
-		
-		
-	
-		
-		
-		
-		
+
 	}
 	
 }

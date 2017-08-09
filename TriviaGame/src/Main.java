@@ -32,6 +32,7 @@ import java.awt.event.MouseListener;
 import javax.swing.SwingConstants;
 import javax.sound.sampled.*;
 import java.awt.Toolkit;
+import javax.swing.UIManager;
 
 public class Main extends JFrame {
 	
@@ -108,8 +109,17 @@ public class Main extends JFrame {
 							if(AskPanel.correctOption.equals("A")){
 								score++;
 								Toolkit.getDefaultToolkit().beep();
-
+								UIManager.put("OptionPane.background", Color.GREEN);
+								UIManager.put("OptionPane.foreground", Color.BLUE);
+								JOptionPane.showMessageDialog(null, "Correct!, Score = " + Integer.toString(score));
+								
 							}
+							
+							else {
+								UIManager.put("OptionPane.background", Color.RED);
+								JOptionPane.showMessageDialog(null, "Wrong!, Score = " + Integer.toString(score));
+							}
+							
 							card.show(ContentPanel, Integer.toString(k+1));
 
 				
@@ -121,12 +131,18 @@ public class Main extends JFrame {
 						public void actionPerformed(ActionEvent a) {
 							if(AskPanel.correctOption.equals("B")){
 								score++;
-							    JButton Score = new JButton("Score  =  " + Integer.toString(score));
-							    ContentPanel.add(Score);
-							    Score.setBounds(10,0,10,10);
-							    Score.setVisible(true);
-						
+								Toolkit.getDefaultToolkit().beep();
+								UIManager.put("OptionPane.background", Color.GREEN);
+								JOptionPane.showMessageDialog(null, "Wrong!, Score = " + Integer.toString(score));
+								
 							}
+							
+							else {
+								UIManager.put("OptionPane.background", Color.RED);
+								JOptionPane.showMessageDialog(null, "Wrong!, Score = " + Integer.toString(score));
+								
+							}
+							
 							card.show(ContentPanel, Integer.toString(k+1));
 						}
 					});	
@@ -136,12 +152,19 @@ public class Main extends JFrame {
 						public void actionPerformed(ActionEvent a) {
 							if(AskPanel.correctOption.equals("C")){
 								score++;
-							    JButton Score = new JButton("Score  =  " + Integer.toString(score));
-							    ContentPanel.add(Score);
-							    Score.setBounds(10,0,10,10);
-							    Score.setVisible(true);
+								Toolkit.getDefaultToolkit().beep();
+								UIManager.put("OptionPane.background", Color.GREEN);
+								JOptionPane.showMessageDialog(null, "Correct!, Score = " + Integer.toString(score));
+								
 							  
 							}
+							
+							else {
+								UIManager.put("OptionPane.background", Color.RED);
+								JOptionPane.showMessageDialog(null, "Wrong!, Score = " + Integer.toString(score));
+								
+							}
+							
 							card.show(ContentPanel, Integer.toString(k+1));
 						}
 					});	
@@ -151,12 +174,18 @@ public class Main extends JFrame {
 						public void actionPerformed(ActionEvent a) {
 							if(AskPanel.correctOption.equals("D")){
 								score++;
-							    JButton Score = new JButton("Score  =  " + Integer.toString(score));
-							    ContentPanel.add(Score);
-							    Score.setBounds(10,0,10,10);
-							    Score.setVisible(true);
-							
+								Toolkit.getDefaultToolkit().beep();
+								UIManager.put("OptionPane.background", Color.GREEN);
+								JOptionPane.showMessageDialog(null, "Correct!, Score = " + Integer.toString(score));
+								
 							}
+							
+							else {
+								UIManager.put("OptionPane.background", Color.RED);
+								JOptionPane.showMessageDialog(null, "Wrong!, Score = " + Integer.toString(score));
+								
+							}
+							
 							card.show(ContentPanel, Integer.toString(k+1));
 						}
 					});

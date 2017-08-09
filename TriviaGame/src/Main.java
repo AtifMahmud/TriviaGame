@@ -75,6 +75,7 @@ public class Main extends JFrame {
 		
 			// Read the fields of the question, and construct a new one	
 			for (int j=0; j < size; j++){ 
+				 	int k = j;	
 					JTextField q = new JTextField(reader.readLine());
 					A = new JButton(reader.readLine());
 					B = new JButton(reader.readLine());
@@ -93,32 +94,33 @@ public class Main extends JFrame {
 				    C.setSize(ButtonSize);
 				    D.setSize(ButtonSize);
 				    q.setEditable(false);
-					questionList.add(AskPanel); 
+					questionList.add(AskPanel);
+					ContentPanel.add(AskPanel, Integer.toString(j));
 					A.addActionListener(new ActionListener(){
 						@Override
 						public void actionPerformed(ActionEvent a) {
-							card.show(ContentPanel, "1");
+							card.show(ContentPanel, Integer.toString(k+1));
 						}
 					});	
 
 					B.addActionListener(new ActionListener(){
 						@Override
 						public void actionPerformed(ActionEvent a) {
-							card.show(ContentPanel, "1");
+							card.show(ContentPanel, Integer.toString(k+1));
 						}
 					});	
 					
 					C.addActionListener(new ActionListener(){
 						@Override
 						public void actionPerformed(ActionEvent a) {
-							card.show(ContentPanel, "1");
+							card.show(ContentPanel, Integer.toString(k+1));
 						}
 					});	
 					
 					D.addActionListener(new ActionListener(){
 						@Override
 						public void actionPerformed(ActionEvent a) {
-							card.show(ContentPanel, "1");
+							card.show(ContentPanel, Integer.toString(k+1));
 						}
 					});
 					
@@ -137,9 +139,7 @@ public class Main extends JFrame {
 		Frame.setSize(FrameSize);
 		Frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		Frame.setVisible(true);
-		ContentPanel.add(questionList.get(5), "1");
-		ContentPanel.add(questionList.get(4), "2");
-		card.show(ContentPanel, "2");
+	
 		
 				
 		SwingUtilities.invokeLater(new Runnable(){

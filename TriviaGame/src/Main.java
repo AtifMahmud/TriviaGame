@@ -43,177 +43,76 @@ public class Main extends JFrame {
 	public static int score = 0;
 	
 	public static void main (String [] args)  throws Exception {
-		 int size = 10;       // Number of questions in the file
-		 
-		 
-		 	ArrayList <JPanel> questionList = new ArrayList<JPanel>();
+		
+		Question NewQuestion;
+	    String Question; 
+		String OptionA;
+		String OptionB;
+		String OptionC;
+		String OptionD;
+		String CorrectOption; 	
+		ArrayList <Question> QuestionList = new ArrayList <Question>(); // the arraylist to hold the questions
 		
 		
-			Dimension FrameSize = new Dimension(500, 500);
-			Dimension ButtonSize = new Dimension(20,10);
+			//Dimension FrameSize = new Dimension(500, 500);
+			//Dimension ButtonSize = new Dimension(20,10);
 			
-			JFrame Frame = new JFrame();
-			JPanel ContentPanel = new JPanel();
+			//JFrame Frame = new JFrame();
+			//JPanel ContentPanel = new JPanel();
 			
-			CardLayout card = new CardLayout();
-			ContentPanel.setLayout(card);
+			//CardLayout card = new CardLayout();
+			//ContentPanel.setLayout(card);
 			
-			JButton A = null,B=null,C=null,D = null;
+			//JButton A = null,B=null,C=null,D = null;
 			
-			Font QuestionFont = new Font("Arial", Font.BOLD, 20);
+			//Font QuestionFont = new Font("Arial", Font.BOLD, 20);
 			
+		 	
+		 	
 			// One case where we need the try-catch block is if the file doesn't exist
-			try {
+			
+		 	try {
 				FileReader questionFile = new FileReader ("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/QuestionBank.txt");	
 				BufferedReader reader = new BufferedReader(questionFile);
 			
-				// Read the fields of the question, and construct a new one	
-				for (int j=0; j < size; j++){ 
-					 	int k = j;	
-						JTextField q = new JTextField(reader.readLine());
-						A = new JButton(reader.readLine());
-						B = new JButton(reader.readLine());
-						C = new JButton(reader.readLine());
-					    D = new JButton(reader.readLine());
-					    String correct = reader.readLine();
-					    QuestionPanel AskPanel = new QuestionPanel (q, A, B, C, D, correct);
-					    
-					    
-					    
-					    AskPanel.setLayout(new GridLayout(2,2,15,15)); // 2 rows and 2 columns, hgap and vgap of 15
-					    
 				
-					    q.setFont(QuestionFont);
-					   
-					    
-					    A.setPreferredSize(ButtonSize);
-					    B.setPreferredSize(ButtonSize);
-					    C.setPreferredSize(ButtonSize);
-					    D.setPreferredSize(ButtonSize);
-					    
-					    A.setMaximumSize(ButtonSize);
-					    B.setMaximumSize(ButtonSize);
-					    C.setMaximumSize(ButtonSize);
-					    D.setMaximumSize(ButtonSize);
-					    
-					    A.setBackground(Color.MAGENTA);
-					    B.setBackground(Color.MAGENTA);
-					    C.setBackground(Color.MAGENTA);
-					    D.setBackground(Color.MAGENTA);
-					    
-						  //  AskPanel.add(q);
-					    AskPanel.add(A);
-					    AskPanel.add(B);
-					    AskPanel.add(C);
-					    AskPanel.add(D);
-					    
-					    
-					    q.setEditable(false);
-						questionList.add(AskPanel);
-						ContentPanel.add(AskPanel, Integer.toString(j));
-						
-						A.addActionListener(new ActionListener(){
-							@Override
-							public void actionPerformed(ActionEvent a) {
-								if(AskPanel.correctOption.equals("A")){
-									score++;
-									Toolkit.getDefaultToolkit().beep();
-									UIManager.put("OptionPane.background", Color.GREEN);
-									UIManager.put("OptionPane.foreground", Color.BLUE);
-									JOptionPane.showMessageDialog(null, "Correct!, Score = " + Integer.toString(score));
-									
-								}
-								
-								else {
-									UIManager.put("OptionPane.background", Color.RED);
-									JOptionPane.showMessageDialog(null, "Wrong!, Score = " + Integer.toString(score));
-								}
-								
-								card.show(ContentPanel, Integer.toString(k+1));
-	
-					
-							}
-						});	
-	
-						B.addActionListener(new ActionListener(){
-							@Override
-							public void actionPerformed(ActionEvent a) {
-								if(AskPanel.correctOption.equals("B")){
-									score++;
-									Toolkit.getDefaultToolkit().beep();
-									UIManager.put("OptionPane.background", Color.GREEN);
-									JOptionPane.showMessageDialog(null, "Wrong!, Score = " + Integer.toString(score));
-									
-								}
-								
-								else {
-									UIManager.put("OptionPane.background", Color.RED);
-									JOptionPane.showMessageDialog(null, "Wrong!, Score = " + Integer.toString(score));
-									
-								}
-								
-								card.show(ContentPanel, Integer.toString(k+1));
-							}
-						});	
-						
-						C.addActionListener(new ActionListener(){
-							@Override
-							public void actionPerformed(ActionEvent a) {
-								if(AskPanel.correctOption.equals("C")){
-									score++;
-									Toolkit.getDefaultToolkit().beep();
-									UIManager.put("OptionPane.background", Color.GREEN);
-									JOptionPane.showMessageDialog(null, "Correct!, Score = " + Integer.toString(score));
-									
-								  
-								}
-								
-								else {
-									UIManager.put("OptionPane.background", Color.RED);
-									JOptionPane.showMessageDialog(null, "Wrong!, Score = " + Integer.toString(score));
-									
-								}
-								
-								card.show(ContentPanel, Integer.toString(k+1));
-							}
-						});	
-						
-						D.addActionListener(new ActionListener(){
-							@Override
-							public void actionPerformed(ActionEvent a) {
-								if(AskPanel.correctOption.equals("D")){
-									score++;
-									Toolkit.getDefaultToolkit().beep();
-									UIManager.put("OptionPane.background", Color.GREEN);
-									JOptionPane.showMessageDialog(null, "Correct!, Score = " + Integer.toString(score));
-									
-								}
-								
-								else {
-									UIManager.put("OptionPane.background", Color.RED);
-									JOptionPane.showMessageDialog(null, "Wrong!, Score = " + Integer.toString(score));
-									
-								}
-								
-								card.show(ContentPanel, Integer.toString(k+1));
-							}
-						});
-	
+			    // To count the number of questions in the text file, Source: https://stackoverflow.com/questions/453018/number-of-lines-in-a-file-in-java
+				
+				LineNumberReader LineNumber = new LineNumberReader(questionFile);	
+				LineNumber.skip(Long.MAX_VALUE);                               // Not sure why this line here; ask someone
+				int numQuestions = (LineNumber.getLineNumber() + 1) / 6;       // +1 because it starts counting at 0, divide by 6 because 6 lines per question
+				LineNumber.close();
+				
+				
+				// Construct a new Question object and add it to the ArrayList
+				
+				for (int j=0; j < numQuestions; j++){ 	
+						Question = reader.readLine();
+						OptionA =  reader.readLine();
+						OptionB =  reader.readLine();
+						OptionC =  reader.readLine();
+					    OptionD =  reader.readLine();
+					    CorrectOption = reader.readLine();
+					    NewQuestion = new Question(Question, OptionA, OptionB, OptionC, OptionD, CorrectOption);
+					    QuestionList.add(NewQuestion);
 				}
-			}
+			} // try ends here
 		  
+			
 		    catch (IOException e){
-				System.out.println("We've hit a problem. Please try again\n\n");
+				JOptionPane.showMessageDialog(null, "We have encountered an error. Please confirm that the QuestionFile has not been removed from the game directory.\n\n");
 				System.exit(0);            // Add this to prevent program from running further when we hit the exception
 		  } 
+			
 		
-			Frame.add(ContentPanel);
+		/*  Frame.add(ContentPanel);
 			Frame.setSize(FrameSize);
 			ContentPanel.setSize(FrameSize);
 			Frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 			Frame.setVisible(true);
+		*/
 	
-			
+//==================================================================================================================			
 			/**
 			 * This will ensure main runs once the mouse event is detected 
 			 */

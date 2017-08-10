@@ -20,6 +20,8 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
 import java.util.Random;
 import java.io.*;
 import javax.swing.SwingUtilities;
@@ -34,6 +36,7 @@ import javax.sound.sampled.*;
 import java.awt.Toolkit;
 import javax.swing.UIManager;
 import java.awt.Component;
+import java.awt.font.*;
 
 public class Main extends JFrame {
 	
@@ -57,6 +60,8 @@ public class Main extends JFrame {
 			
 			JButton A = null,B=null,C=null,D = null;
 			
+			Font QuestionFont = new Font("Arial", Font.BOLD, 20);
+			
 			// One case where we need the try-catch block is if the file doesn't exist
 			try {
 				FileReader questionFile = new FileReader ("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/QuestionBank.txt");	
@@ -74,20 +79,34 @@ public class Main extends JFrame {
 					    QuestionPanel AskPanel = new QuestionPanel (q, A, B, C, D, correct);
 					    
 					    
-					    A.setSize(ButtonSize);
-					    B.setSize(ButtonSize);
-					    C.setSize(ButtonSize);
-					    D.setSize(ButtonSize);
 					    
-					    AskPanel.setLayout(new GridLayout(2,2,10,10)); // 2 rows and 2 columns, hgap and vgap of 10
+					    AskPanel.setLayout(new GridLayout(2,2,15,15)); // 2 rows and 2 columns, hgap and vgap of 15
 					    
-					    AskPanel.add(q);
+				
+					    q.setFont(QuestionFont);
+					   
+					    
+					    A.setPreferredSize(ButtonSize);
+					    B.setPreferredSize(ButtonSize);
+					    C.setPreferredSize(ButtonSize);
+					    D.setPreferredSize(ButtonSize);
+					    
+					    A.setMaximumSize(ButtonSize);
+					    B.setMaximumSize(ButtonSize);
+					    C.setMaximumSize(ButtonSize);
+					    D.setMaximumSize(ButtonSize);
+					    
+					    A.setBackground(Color.MAGENTA);
+					    B.setBackground(Color.MAGENTA);
+					    C.setBackground(Color.MAGENTA);
+					    D.setBackground(Color.MAGENTA);
+					    
+						  //  AskPanel.add(q);
 					    AskPanel.add(A);
 					    AskPanel.add(B);
 					    AskPanel.add(C);
 					    AskPanel.add(D);
 					    
-				
 					    
 					    q.setEditable(false);
 						questionList.add(AskPanel);
@@ -194,6 +213,11 @@ public class Main extends JFrame {
 			Frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 			Frame.setVisible(true);
 	
+			
+			/**
+			 * This will ensure main runs once the mouse event is detected 
+			 */
+			
 			SwingUtilities.invokeLater(new Runnable(){
 					@Override
 					public void run(){

@@ -37,25 +37,25 @@ public class Main extends JFrame {
 		 	
 			// One case where we need the try-catch block is if the file doesn't exist	
 		 	try {
-				FileReader questionFile = new FileReader ("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/QuestionBank.txt");	
-				BufferedReader reader = new BufferedReader(questionFile);
-			
+				FileReader QuestionFile = new FileReader ("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/QuestionBank.txt");	
+				BufferedReader Reader = new BufferedReader(QuestionFile);
+				FileReader LineReader = new FileReader("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/QuestionBank.txt");
 				
 			    // To count the number of questions in the text file, Source: https://stackoverflow.com/questions/453018/number-of-lines-in-a-file-in-java
-				LineNumberReader LineNumber = new LineNumberReader(questionFile);	
+				LineNumberReader LineNumber = new LineNumberReader(LineReader);	
 				LineNumber.skip(Long.MAX_VALUE);                               // Not sure why this line here; ask someone
 				int numQuestions = (LineNumber.getLineNumber() + 1) / 6;       // +1 because it starts counting at 0, divide by 6 because 6 lines per question
-			//  LineNumber.close();                                            // Don't close now
+			    LineNumber.close();                                            // Don't close now
 				
 				
 				// Construct a new Question object and add it to the ArrayList
-				for (int j=0; j < numQuestions; j++){ 	
-					Question = reader.readLine(); 
-					OptionA =  reader.readLine();
-					OptionB =  reader.readLine();
-					OptionC =  reader.readLine();
-				    OptionD =  reader.readLine();
-					CorrectOption = reader.readLine();
+				for (int j=0; j < 5; j++){ 	
+					Question = Reader.readLine(); 
+					OptionA =  Reader.readLine();
+					OptionB =  Reader.readLine();
+					OptionC =  Reader.readLine();
+				    OptionD =  Reader.readLine();
+					CorrectOption = Reader.readLine();
 					NewQuestion = new Question(Question, OptionA, OptionB, OptionC, OptionD, CorrectOption);
 					QuestionList.add(NewQuestion);
 				}
@@ -67,22 +67,21 @@ public class Main extends JFrame {
 				e.printStackTrace();
 				System.exit(0);            // Add this to prevent program from running further when we hit the exception
 		  } 
-		
-		 // Set up the JFame, ContentPanel, and QuestionPanel
-		 GUI GameGUI = new GUI();
-		
+			
+		  System.out.println(QuestionList.get(1).Question);
+		 	
 		 // Create a panel from each question and add it to panel list: Should I make panel at once when making the Question objects?	 
 		 for (int i=0; i < QuestionList.size(); ++i) {
 			 Question QuestionForPanel = QuestionList.get(i);
 			 QuestionPanel NewPanel = new QuestionPanel (QuestionForPanel.Question, QuestionForPanel.OptionA, QuestionForPanel.OptionB, // line break here
 					 					QuestionForPanel.OptionC, QuestionForPanel.OptionD, QuestionForPanel.CorrectOption);
 			 PanelList.add(NewPanel);
-			 GameGUI.add(NewPanel);
+			 
 		 }
 		 	
-		
-	//	 GameGUI.add(PanelList.get(0));   // Do on GameGUI (the instance), and not GUI
-		 
+		 // Set up the JFame, ContentPanel, and QuestionPanel
+		 GUI GameGUI = new GUI();
+		 GameGUI.add(PanelList.get(0));   // Do on GameGUI (the instance), and not GUI
 		 GameGUI.setVisible(true);  
 		 				
 			

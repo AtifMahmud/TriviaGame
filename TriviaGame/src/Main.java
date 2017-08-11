@@ -14,9 +14,10 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.awt.Container;
 import java.io.*;
 import javax.swing.SwingUtilities;
-
+import java.awt.Color;
 
 public class Main extends JFrame {
 	
@@ -41,12 +42,13 @@ public class Main extends JFrame {
 				BufferedReader Reader = new BufferedReader(QuestionFile);
 				FileReader LineReader = new FileReader("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/QuestionBank.txt");
 				
+				// Find out why doing LineReader on QuestionFile gave Question Fields as null
+				
 			    // To count the number of questions in the text file, Source: https://stackoverflow.com/questions/453018/number-of-lines-in-a-file-in-java
 				LineNumberReader LineNumber = new LineNumberReader(LineReader);	
 				LineNumber.skip(Long.MAX_VALUE);                               // Not sure why this line here; ask someone
 				int numQuestions = (LineNumber.getLineNumber() + 1) / 6;       // +1 because it starts counting at 0, divide by 6 because 6 lines per question
-			    LineNumber.close();                                            // Don't close now
-				
+			    LineNumber.close();                                           
 				
 				// Construct a new Question object and add it to the ArrayList
 				for (int j=0; j < 5; j++){ 	
@@ -67,8 +69,6 @@ public class Main extends JFrame {
 				e.printStackTrace();
 				System.exit(0);            // Add this to prevent program from running further when we hit the exception
 		  } 
-			
-		  System.out.println(QuestionList.get(1).Question);
 		 	
 		 // Create a panel from each question and add it to panel list: Should I make panel at once when making the Question objects?	 
 		 for (int i=0; i < QuestionList.size(); ++i) {
@@ -83,8 +83,7 @@ public class Main extends JFrame {
 		 GUI GameGUI = new GUI();
 		 GameGUI.add(PanelList.get(0));   // Do on GameGUI (the instance), and not GUI
 		 GameGUI.setVisible(true);  
-		 				
-			
+		
 			// This will ensure main runs once the mouse event is detected 
 			SwingUtilities.invokeLater(new Runnable(){
 					@Override

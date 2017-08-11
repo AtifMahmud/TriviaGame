@@ -7,7 +7,6 @@ public class Question{
 	public String CorrectOption;
 	public GUI MyGUI;
 	
-	
 	// Constructor for a new question
 	public Question (String Question, String OptionA, String OptionB, String OptionC, String OptionD, String CorrectOption){
 		this.Question = Question;

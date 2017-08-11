@@ -23,8 +23,6 @@ public class QuestionPanel extends JPanel{
 		
 		setLayout(new GridBagLayout()); 
 		GridBagConstraints c = new GridBagConstraints();
-		c.gridx = 0;
-		c.gridy = 0;
 		
 		// Are the this.field lines necessary?
 		this.Q = Question;
@@ -41,20 +39,29 @@ public class QuestionPanel extends JPanel{
 		JButton ButtonC = new JButton(C);
 		JButton ButtonD = new JButton(D);
 	
-		c.gridx = 10;
-		c.gridy = -5;
+		
+		c.gridx = 0;
+		c.gridy = 0;
 		add(QuestionLabel, c);
-		c.gridy++;
+		
+		c.gridy = 25;
 		add(ButtonA, c);
+		
 		c.gridy++;
 		add(ButtonB, c);
+		
+		c.gridy++;
 		add(ButtonC, c);
+	
+		c.gridy++;
 		add(ButtonD, c);
 		
-		ButtonA.setBackground(Color.blue);
-		ButtonB.setBackground(Color.blue);
-		ButtonC.setBackground(Color.blue);
-		ButtonD.setBackground(Color.blue);
+		ButtonA.setBackground(Color.LIGHT_GRAY);
+		ButtonB.setBackground(Color.LIGHT_GRAY);
+		ButtonC.setBackground(Color.LIGHT_GRAY);
+		ButtonD.setBackground(Color.LIGHT_GRAY);
+		
+		setBackground(Color.magenta);
 	
 	}
 }

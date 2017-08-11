@@ -14,10 +14,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import java.awt.Container;
 import java.io.*;
 import javax.swing.SwingUtilities;
-import java.awt.Color;
 
 public class Main extends JFrame {
 	
@@ -83,14 +81,16 @@ public class Main extends JFrame {
 		 GUI GameGUI = new GUI();
 		 GameGUI.add(PanelList.get(0));   // Do on GameGUI (the instance), and not GUI
 		 GameGUI.setVisible(true);  
-		
+	
+		 
 			// This will ensure main runs once the mouse event is detected 
-			SwingUtilities.invokeLater(new Runnable(){
-					@Override
-					public void run(){
-						new Main();
-					}
-				});
+		    // Event Dispatching Thread: Figure out what it is for
+		  SwingUtilities.invokeLater(new Runnable(){
+				@Override
+				public void run(){
+					new Main();
+				}
+			});
 	
 		}
 	

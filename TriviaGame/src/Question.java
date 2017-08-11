@@ -16,24 +16,7 @@ public class Question{
 		this.OptionC = OptionC;
 		this.OptionD = OptionD;
 		this.CorrectOption = CorrectOption;
-	
-/*		JPanel QuestionPanel = new JPanel();
-		QuestionPanel.setLayout(new CardLayout());
-		JTextField QuestionText = new JTextField(question);
-		JButton A = new JButton(OptionA);
-		JButton B = new JButton(OptionB);
-		JButton C = new JButton(OptionC);
-		JButton D = new JButton(OptionD);
-		JButton correct = new JButton(correctOption);
-		
-		QuestionPanel.add(QuestionText);
-		QuestionPanel.add(A);
-		QuestionPanel.add(B);
-		QuestionPanel.add(C);
-		QuestionPanel.add(D);
-		QuestionPanel.add(correct);
- */
-	
+
 	}
 }
 	

@@ -82,7 +82,7 @@ public class Main extends JFrame {
 		 
 		 // Set up the JFame, ContentPanel, and QuestionPanel
 		 GUI GameGUI = new GUI();
-		 GameGUI.add(PanelList.get(2));   // Do on GameGUI (the instance), and not GUI
+		 GameGUI.add(PanelList.get(6));   // Do on GameGUI (the instance), and not GUI
 		 GameGUI.setVisible(true);  
 	     
 		 

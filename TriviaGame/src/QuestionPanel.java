@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.SwingUtilities;
 import java.awt.event.*;
 import javax.swing.JTextField;
+import java.awt.event.ActionEvent;
 
 public class QuestionPanel extends JPanel{
 	String Question;
@@ -18,7 +19,7 @@ public class QuestionPanel extends JPanel{
 	String OptionB;
 	String OptionC;
 	String OptionD;
-    static String Correct;
+    String Correct;
 	
 	public QuestionPanel(String Question, String OptionA, String OptionB, String OptionC, String OptionD, String CorrectOption) {
 		
@@ -81,8 +82,14 @@ public class QuestionPanel extends JPanel{
 			b.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent event) {
+					
+					boolean check = (event.getSource().equals(A) && Correct.contains("A")) || // line break
+							(event.getSource().equals(B) && Correct.contains("B")) || //  line break
+							(event.getSource().equals(C) && Correct.contains("C")) || // line break
+							(event.getSource().equals(D) && Correct.contains("D")); //  line break
+					
 					//System.out.println(event.getSource().toString());
-					if(event.getSource().equals(A) ){
+					if(check){
 						b.setBackground(Color.GREEN);
 						Main.score++;
 					}

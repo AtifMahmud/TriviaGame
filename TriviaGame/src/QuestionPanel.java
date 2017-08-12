@@ -7,6 +7,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.font.*;
+import java.util.ArrayList;
+
 
 public class QuestionPanel extends JPanel{
 	String Q;
@@ -41,49 +43,35 @@ public class QuestionPanel extends JPanel{
 		JButton ButtonC = new JButton(C);
 		JButton ButtonD = new JButton(D);
 	
-		c.anchor = GridBagConstraints.CENTER;
+		// Make an ArrayList to hold all the buttons to use iterator
+		ArrayList <JButton> ButtonList = new ArrayList<JButton>();
 		
-		
-		
-		d.gridx = 0;
-		d.gridy = 0;
-		add(QuestionLabel, d);
-		
-		c.gridx = 0;
-		c.gridy = 0;
-		
-		c.gridx = 0;
-		c.gridy = 60;
-		add(ButtonA, c);
-		
-		c.gridx = 0;
-		c.gridy = 90;
-		add(ButtonB, c);
-		
-		c.gridx = 0;
-		c.gridy = 120;
-		add(ButtonC, c);
+		ButtonList.add(ButtonA);
+		ButtonList.add(ButtonB);
+		ButtonList.add(ButtonC);
+		ButtonList.add(ButtonD);
 	
 		c.gridx = 0;
-		c.gridy = 150;
+		c.gridy = 0;
+		add(QuestionLabel, c);
+		c.gridy++;
+		add(ButtonA, c);
+		c.gridy++;
+		add(ButtonB, c);
+		c.gridy++;
+		add(ButtonC, c);
+		c.gridy++;
 		add(ButtonD, c);
 		
-		ButtonA.setBackground(Color.LIGHT_GRAY);
-		ButtonB.setBackground(Color.LIGHT_GRAY);
-		ButtonC.setBackground(Color.LIGHT_GRAY);
-		ButtonD.setBackground(Color.LIGHT_GRAY);
 		
-		ButtonA.setPreferredSize(ButtonSize);
-		ButtonB.setPreferredSize(ButtonSize);
-		ButtonC.setPreferredSize(ButtonSize);
-		ButtonD.setPreferredSize(ButtonSize);
+		// Designing all the buttons
+		for(int i=0; i < ButtonList.size(); ++i) {
+			ButtonList.get(i).setBackground(Color.LIGHT_GRAY);
+			ButtonList.get(i).setPreferredSize(ButtonSize);
+			ButtonList.get(i).setFont(ButtonFont);
+		}
 		
-		ButtonA.setFont(ButtonFont);
-		ButtonB.setFont(ButtonFont);
-		ButtonC.setFont(ButtonFont);
-		ButtonD.setFont(ButtonFont);
-		
-		
+	
 		setBackground(Color.WHITE);
 	
 	}

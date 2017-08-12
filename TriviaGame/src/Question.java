@@ -4,7 +4,7 @@ public class Question{
 	public String OptionB;
 	public String OptionC;
 	public String OptionD;
-	public String CorrectOption;
+	public static String CorrectOption;
 	public GUI MyGUI;
 	
 	// Constructor for a new question

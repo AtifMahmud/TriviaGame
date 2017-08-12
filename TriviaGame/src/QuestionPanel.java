@@ -8,15 +8,17 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.font.*;
 import java.util.ArrayList;
-
+import javax.swing.SwingUtilities;
+import java.awt.event.*;
+import javax.swing.JTextField;
 
 public class QuestionPanel extends JPanel{
-	String Q;
-	String A;
-	String B;
-	String C;
-	String D;
-    String Correct;
+	String Question;
+	String OptionA;
+	String OptionB;
+	String OptionC;
+	String OptionD;
+    static String Correct;
 	
 	public QuestionPanel(String Question, String OptionA, String OptionB, String OptionC, String OptionD, String CorrectOption) {
 		
@@ -29,48 +31,70 @@ public class QuestionPanel extends JPanel{
 		GridBagConstraints c = new GridBagConstraints();
 		
 		// Are the this.field lines necessary?
-		this.Q = Question;
-		this.A = OptionA;
-		this.B = OptionB;
-		this.C = OptionC;
-		this.D = OptionD;
+		this.Question = Question;
+		this.OptionA = OptionA;
+		this.OptionB = OptionB;
+		this.OptionC = OptionC;
+		this.OptionD = OptionD;
+		this.Correct = CorrectOption;
 		
-		JLabel QuestionLabel = new JLabel(Q);
+		JLabel QuestionLabel = new JLabel(Question);
 		QuestionLabel.setFont(QuestionFont);
 		
-		JButton ButtonA = new JButton(A);
-		JButton ButtonB = new JButton(B);
-		JButton ButtonC = new JButton(C);
-		JButton ButtonD = new JButton(D);
+		JButton A = new JButton(OptionA);
+		JButton B = new JButton(OptionB);
+		JButton C = new JButton(OptionC);
+		JButton D = new JButton(OptionD);
 	
 		// Make an ArrayList to hold all the buttons to use iterator
 		ArrayList <JButton> ButtonList = new ArrayList<JButton>();
 		
-		ButtonList.add(ButtonA);
-		ButtonList.add(ButtonB);
-		ButtonList.add(ButtonC);
-		ButtonList.add(ButtonD);
-	
+		ButtonList.add(A);
+		ButtonList.add(B);
+		ButtonList.add(C);
+		ButtonList.add(D);
+		
+		System.out.print(Correct);
+		
+		// Add the buttons on GridBagLayout
 		c.gridx = 0;
 		c.gridy = 0;
 		add(QuestionLabel, c);
 		c.gridy++;
-		add(ButtonA, c);
+		add(A, c);
 		c.gridy++;
-		add(ButtonB, c);
+		add(B, c);
 		c.gridy++;
-		add(ButtonC, c);
+		add(C, c);
 		c.gridy++;
-		add(ButtonD, c);
-		
+		add(D, c);
 		
 		// Designing all the buttons
 		for(int i=0; i < ButtonList.size(); ++i) {
-			ButtonList.get(i).setBackground(Color.LIGHT_GRAY);
-			ButtonList.get(i).setPreferredSize(ButtonSize);
-			ButtonList.get(i).setFont(ButtonFont);
-		}
+			JButton b = ButtonList.get(i);
+			b.setBackground(Color.LIGHT_GRAY);
+			b.setPreferredSize(ButtonSize);
+			b.setFont(ButtonFont);
+			
+			
+//==================================================================================			
+			b.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent event) {
+					//System.out.println(event.getSource().toString());
+					if(event.getSource().equals(A) ){
+						b.setBackground(Color.GREEN);
+						Main.score++;
+					}
+					
+					else {
+						b.setBackground(Color.RED);
+					}
+				}
+			});
+//==================================================================================			
 		
+		}
 	
 		setBackground(Color.WHITE);
 	

@@ -49,7 +49,7 @@ public class Main extends JFrame {
 			    LineNumber.close();                                           
 				
 				// Construct a new Question object and add it to the ArrayList
-				for (int j=0; j < 5; j++){ 	
+				for (int j=0; j < numQuestions; j++){ 	
 					Question = Reader.readLine(); 
 					OptionA =  Reader.readLine();
 					OptionB =  Reader.readLine();
@@ -61,7 +61,9 @@ public class Main extends JFrame {
 				}
 			} // try ends here
 		  
+		 
 			
+		 	
 		    catch (IOException e){
 				JOptionPane.showMessageDialog(null, "We have encountered an error. Please confirm that the QuestionFile has not been removed from the game directory.\n\n");
 				e.printStackTrace();
@@ -77,11 +79,13 @@ public class Main extends JFrame {
 			 
 		 }
 		 	
+		 
 		 // Set up the JFame, ContentPanel, and QuestionPanel
 		 GUI GameGUI = new GUI();
 		 GameGUI.add(PanelList.get(0));   // Do on GameGUI (the instance), and not GUI
 		 GameGUI.setVisible(true);  
-	
+	     
+		 
 		 
 			// This will ensure main runs once the mouse event is detected 
 		    // Event Dispatching Thread: Figure out what it is for

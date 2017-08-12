@@ -4,7 +4,6 @@ import javax.swing.JTextField;
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
 
-
 public class GUI extends JFrame {
 
 	public String Question;
@@ -24,7 +23,7 @@ public class GUI extends JFrame {
 	public  GUI(){
 		super("Atif's TriviaGame");	
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(new Dimension(1000,1000));
+		setSize(new Dimension(1280,1080));
 		setDefaultLookAndFeelDecorated(false);
 		setIconImage(new ImageIcon("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/question_mark1600.png").getImage());
 		

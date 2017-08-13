@@ -47,7 +47,6 @@ public class QuestionPanel extends JPanel{
 		JButton C = new JButton(OptionC);
 		JButton D = new JButton(OptionD);
 		
-		JLabel Score = new JLabel(Integer.toString(Main.score));
 	
 		// Make an ArrayList to hold all the buttons to use iterator
 		ArrayList <JButton> ButtonList = new ArrayList<JButton>();
@@ -56,8 +55,6 @@ public class QuestionPanel extends JPanel{
 		ButtonList.add(B);
 		ButtonList.add(C);
 		ButtonList.add(D);
-		
-		System.out.print(Correct);
 		
 		// Add the buttons on GridBagLayout
 		c.gridx = 0;
@@ -71,12 +68,6 @@ public class QuestionPanel extends JPanel{
 		add(C, c);
 		c.gridy++;
 		add(D, c);
-		
-		c.gridy = -10;
-		c.gridx = 20;
-		add(Score,c);
-		
-		Score.setFont(ButtonFont);
 		
 		// Designing all the buttons
 		for(int i=0; i < ButtonList.size(); ++i) {
@@ -100,11 +91,14 @@ public class QuestionPanel extends JPanel{
 					if(check){
 						b.setBackground(Color.GREEN);
 						Main.score++;
+						
 					}
 					
 					else {
 						b.setBackground(Color.RED);
 					}
+					
+					Main.run = false;
 				}
 			});
 //==================================================================================			

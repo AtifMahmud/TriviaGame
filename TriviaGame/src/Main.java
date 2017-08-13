@@ -13,13 +13,17 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JOptionPane;
 import java.io.*;
 import javax.swing.SwingUtilities;
+import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
 
 public class Main extends JFrame {
 	
 	public static int score = 0;
+	public static boolean run;
 	
 	public static void main (String [] args)  throws Exception {
 		
@@ -32,7 +36,7 @@ public class Main extends JFrame {
 		String CorrectOption; 	
 		ArrayList <Question> QuestionList = new ArrayList <Question>(); // the arraylist to hold the questions
 		ArrayList <QuestionPanel> PanelList = new ArrayList <QuestionPanel>(); // the arraylist to hold all the question panels 
-		
+		CardLayout card = new CardLayout();
 		 	
 			// One case where we need the try-catch block is if the file doesn't exist	
 		 	try {
@@ -70,32 +74,48 @@ public class Main extends JFrame {
 				System.exit(0);            // Add this to prevent program from running further when we hit the exception
 		  } 
 		 	
+		 	
+		 
+		  JPanel Content = new JPanel();
+		  Content.setLayout(card);
+		 	
 		 // Create a panel from each question and add it to panel list: Should I make panel at once when making the Question objects?	 
 		 for (int i=0; i < QuestionList.size(); ++i) {
 			 Question QuestionForPanel = QuestionList.get(i);
 			 QuestionPanel NewPanel = new QuestionPanel (QuestionForPanel.Question, QuestionForPanel.OptionA, QuestionForPanel.OptionB, // line break here
 					 					QuestionForPanel.OptionC, QuestionForPanel.OptionD, QuestionForPanel.CorrectOption);
 			 PanelList.add(NewPanel);
+			 Content.add(NewPanel, Integer.toString(i));
 			 
 		 }
-		 	
+		 
 		 
 		 // Set up the JFame, ContentPanel, and QuestionPanel
 		 GUI GameGUI = new GUI();
-		 GameGUI.add(PanelList.get(6));   // Do on GameGUI (the instance), and not GUI
-		 GameGUI.setVisible(true);  
+	     GameGUI.setVisible(true);  
+	     GameGUI.add(Content);
 	     
+		 for (int i =0; i < 6; i++) {
+			run = true;
+			while(run) {
+				card.show(Content, Integer.toString(i));
+				Thread.sleep(500);
+				if(run == false) {
+					break;
+				}
+				continue;
+			}
+		 }
 		 
-		 
-			// This will ensure main runs once the mouse event is detected 
-		    // Event Dispatching Thread: Figure out what it is for
-		  SwingUtilities.invokeLater(new Runnable(){
+		
+		// This will ensure main runs once the mouse event is detected 
+		// Event Dispatching Thread: Figure out what it is for
+		 SwingUtilities.invokeLater(new Runnable(){
 				@Override
 				public void run(){
 					new Main();
 				}
 			});
-	
 		}
-	
+
 }

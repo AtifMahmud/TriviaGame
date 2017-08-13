@@ -45,8 +45,7 @@ public class Main extends JFrame {
 				FileReader LineReader = new FileReader("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/QuestionBank.txt");
 				
 				// Find out why doing LineReader on QuestionFile gave Question Fields as null
-				
-			    // To count the number of questions in the text file, Source: https://stackoverflow.com/questions/453018/number-of-lines-in-a-file-in-java
+     		    // To count the number of questions in the text file, Source: https://stackoverflow.com/questions/453018/number-of-lines-in-a-file-in-java
 				LineNumberReader LineNumber = new LineNumberReader(LineReader);	
 				LineNumber.skip(Long.MAX_VALUE);                               // Not sure why this line here; ask someone
 				int numQuestions = (LineNumber.getLineNumber() + 1) / 6;       // +1 because it starts counting at 0, divide by 6 because 6 lines per question
@@ -65,17 +64,12 @@ public class Main extends JFrame {
 				}
 			} // try ends here
 		  
-		 
-			
-		 	
 		    catch (IOException e){
 				JOptionPane.showMessageDialog(null, "We have encountered an error. Please confirm that the QuestionFile has not been removed from the game directory.\n\n");
 				e.printStackTrace();
 				System.exit(0);            // Add this to prevent program from running further when we hit the exception
 		  } 
 		 	
-		 	
-		 
 		  JPanel Content = new JPanel();
 		  Content.setLayout(card);
 		 	
@@ -89,25 +83,24 @@ public class Main extends JFrame {
 			 
 		 }
 		 
-		 
 		 // Set up the JFame, ContentPanel, and QuestionPanel
 		 GUI GameGUI = new GUI();
-	     GameGUI.setVisible(true);  
-	     GameGUI.add(Content);
+	     GameGUI.add(new MainMenu());
+		 GameGUI.setVisible(true);  
+	    // GameGUI.add(Content);
 	     
 		 for (int i =0; i < 6; i++) {
 			run = true;
 			while(run) {
 				card.show(Content, Integer.toString(i));
-				Thread.sleep(500);
 				if(run == false) {
+					Thread.sleep(500);
 					break;
 				}
 				continue;
 			}
 		 }
 		 
-		
 		// This will ensure main runs once the mouse event is detected 
 		// Event Dispatching Thread: Figure out what it is for
 		 SwingUtilities.invokeLater(new Runnable(){

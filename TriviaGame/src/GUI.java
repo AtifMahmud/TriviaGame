@@ -23,7 +23,7 @@ public class GUI extends JFrame {
 	public  GUI(){
 		super("Atif's TriviaGame");	
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(new Dimension(1280,1080));
+		setSize(new Dimension(1920,1080));
 		setDefaultLookAndFeelDecorated(false);
 		setIconImage(new ImageIcon("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/question_mark1600.png").getImage());
 		

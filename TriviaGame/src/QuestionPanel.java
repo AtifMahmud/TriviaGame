@@ -76,7 +76,6 @@ public class QuestionPanel extends JPanel{
 			b.setPreferredSize(ButtonSize);
 			b.setFont(ButtonFont);
 			
-			
 //==================================================================================			
 			b.addActionListener(new ActionListener(){
 				@Override
@@ -102,10 +101,7 @@ public class QuestionPanel extends JPanel{
 				}
 			});
 //==================================================================================			
-		
 		}
-	
 		setBackground(Color.WHITE);
-	
 	}
 }

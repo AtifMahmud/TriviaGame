@@ -23,6 +23,7 @@ import java.awt.event.ActionEvent;
 public class Main extends JFrame {
 	
 	public static int score = 0;
+	public static volatile int start;
 	public static boolean run;
 	
 	public static void main (String [] args)  throws Exception {
@@ -84,11 +85,24 @@ public class Main extends JFrame {
 		 }
 		 
 		 // Set up the JFame, ContentPanel, and QuestionPanel
+		 MainMenu MainMenu = new MainMenu();
 		 GUI GameGUI = new GUI();
-	     GameGUI.add(new MainMenu());
+	     GameGUI.add(MainMenu);
 		 GameGUI.setVisible(true);  
-	    // GameGUI.add(Content);
-	     
+		 
+		
+		 
+		 while (start == 0) {
+			 Thread.sleep(500);
+			 System.out.println(start);
+			 if(start != 0) break;
+		 }
+		 
+		 GameGUI.remove(MainMenu);
+		 GameGUI.add(Content);
+		 GameGUI.repaint();
+		 GameGUI.revalidate();
+		 
 		 for (int i =0; i < 6; i++) {
 			run = true;
 			while(run) {
@@ -110,5 +124,4 @@ public class Main extends JFrame {
 				}
 			});
 		}
-
 }

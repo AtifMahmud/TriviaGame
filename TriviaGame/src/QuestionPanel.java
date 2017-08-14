@@ -6,12 +6,11 @@ import java.awt.GridBagConstraints;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.font.*;
 import java.util.ArrayList;
-import javax.swing.SwingUtilities;
 import java.awt.event.*;
-import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
+import java.io.*;
+import sun.audio.*;
 
 public class QuestionPanel extends JPanel{
 	String Question;
@@ -23,9 +22,19 @@ public class QuestionPanel extends JPanel{
 	
 	public QuestionPanel(String Question, String OptionA, String OptionB, String OptionC, String OptionD, String CorrectOption) {
 		
+		AudioStream Audio;
+		
 		Dimension ButtonSize = new Dimension(200,100); // (width, height)
 		Font QuestionFont = new Font("Arial", Font.BOLD, 36);
 		Font ButtonFont = new Font("Arial", Font.BOLD, 16);
+		
+		try {
+			InputStream In = new FileInputStream("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/correct.wav");
+			Audio = new AudioStream(In);
+			
+		
+		
+		
 		
 		setLayout(new GridBagLayout()); 
 		GridBagConstraints d = new GridBagConstraints();
@@ -89,7 +98,9 @@ public class QuestionPanel extends JPanel{
 					//System.out.println(event.getSource().toString());
 					if(check){
 						b.setBackground(Color.GREEN);
+						AudioPlayer.player.start(Audio);
 						Main.score++;
+					
 						
 					}
 					
@@ -103,5 +114,11 @@ public class QuestionPanel extends JPanel{
 //==================================================================================			
 		}
 		setBackground(Color.WHITE);
+		
+		
+	}
+		catch (IOException e) {
+			
+		}
 	}
 }

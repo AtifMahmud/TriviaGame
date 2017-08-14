@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 import java.io.*;
 import javax.swing.SwingUtilities;
 import java.awt.CardLayout;
-import java.awt.event.ActionEvent;
+
 
 public class Main extends JFrame {
 	
@@ -94,7 +94,6 @@ public class Main extends JFrame {
 		 
 		 while (start == 0) {
 			 Thread.sleep(500);
-			 System.out.println(start);
 			 if(start != 0) break;
 		 }
 		 
@@ -103,17 +102,20 @@ public class Main extends JFrame {
 		 GameGUI.repaint();
 		 GameGUI.revalidate();
 		 
-		 for (int i =0; i < 6; i++) {
+		 for (int i =0; i < 12; i++) {
 			run = true;
 			while(run) {
 				card.show(Content, Integer.toString(i));
 				if(run == false) {
-					Thread.sleep(500);
+					Thread.sleep(5000);
 					break;
 				}
 				continue;
 			}
 		 }
+		
+		
+		 System.exit(0);
 		 
 		// This will ensure main runs once the mouse event is detected 
 		// Event Dispatching Thread: Figure out what it is for

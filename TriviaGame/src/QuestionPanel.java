@@ -1,3 +1,15 @@
+/**
+ * Project: TriviaGame
+ * 
+ * Description: Plays a game of trivia with the user 
+ * 
+ * File: QuestionPanel.java: Part of "View" of the MVC framework. Builds a JPanel for the questions
+ * 
+ * @author Atif Mahmud
+ * @Date 2nd June 2017
+ * 
+ */
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -9,33 +21,26 @@ import java.awt.Font;
 import java.util.ArrayList;
 import java.awt.event.*;
 import java.awt.event.ActionEvent;
-import java.io.*;
-import sun.audio.*;
+
 
 public class QuestionPanel extends JPanel{
-	String Question;
-	String OptionA;
-	String OptionB;
-	String OptionC;
-	String OptionD;
-    String Correct;
+	private String Question;
+	private String OptionA;
+	private String OptionB;
+	private String OptionC;
+	private String OptionD;
+    private String Correct;
 	
 	public QuestionPanel(String Question, String OptionA, String OptionB, String OptionC, String OptionD, String CorrectOption) {
 		
-	//	AudioStream Audio;
-		
-		Dimension ButtonSize = new Dimension(200,100); // (width, height)
+		Dimension ButtonSize = new Dimension(200,100); 
 		Font QuestionFont = new Font("Arial", Font.BOLD, 36);
 		Font ButtonFont = new Font("Arial", Font.BOLD, 16);
 		
-		
-		//InputStream In = new FileInputStream("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/correct.wav");
-		//	Audio = new AudioStream(In);
 		setLayout(new GridBagLayout()); 
 		GridBagConstraints d = new GridBagConstraints();
 		GridBagConstraints c = new GridBagConstraints();
 		
-		// Are the this.field lines necessary?
 		this.Question = Question;
 		this.OptionA = OptionA;
 		this.OptionB = OptionB;
@@ -51,8 +56,6 @@ public class QuestionPanel extends JPanel{
 		JButton C = new JButton(OptionC);
 		JButton D = new JButton(OptionD);
 		
-	
-		// Make an ArrayList to hold all the buttons to use iterator
 		ArrayList <JButton> ButtonList = new ArrayList<JButton>();
 		
 		ButtonList.add(A);
@@ -60,7 +63,6 @@ public class QuestionPanel extends JPanel{
 		ButtonList.add(C);
 		ButtonList.add(D);
 		
-		// Add the buttons on GridBagLayout
 		c.gridx = 0;
 		c.gridy = 0;
 		add(QuestionLabel, c);
@@ -80,7 +82,6 @@ public class QuestionPanel extends JPanel{
 			b.setPreferredSize(ButtonSize);
 			b.setFont(ButtonFont);
 			
-//==================================================================================			
 			b.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent event) {
@@ -90,24 +91,22 @@ public class QuestionPanel extends JPanel{
 							(event.getSource().equals(C) && Correct.contains("C")) || // line break
 							(event.getSource().equals(D) && Correct.contains("D")); //  line break
 					
-					//System.out.println(event.getSource().toString());
 					if(check){
 						b.setBackground(Color.GREEN);
-					//	AudioPlayer.player.start(Audio);
-						Main.score++;	
+						Main.incrementScore();	
 					}
 					
 					else {
 						b.setBackground(Color.RED);
 					}
 					
-					Main.run = false;
+					Main.setRun(false);
 				}
 			});
-//==================================================================================			
-		}
-		setBackground(Color.WHITE);
 		
+		}
+		
+		setBackground(Color.WHITE);
 		
 	}
 		

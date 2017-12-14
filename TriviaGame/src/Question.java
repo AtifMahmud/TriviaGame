@@ -1,14 +1,12 @@
-public class Question{
+public class Question {
     private String Question; 
 	private String OptionA;
 	private String OptionB;
 	private String OptionC;
 	private String OptionD;
 	private String CorrectOption;
-	private GUI MyGUI;
 	
-	// Constructor for a new question
-	public Question (String Question, String OptionA, String OptionB, String OptionC, String OptionD, String CorrectOption){
+	public Question (String Question, String OptionA, String OptionB, String OptionC, String OptionD, String CorrectOption) {
 		this.Question = Question;
 		this.OptionA = OptionA;
 		this.OptionB = OptionB;
@@ -33,12 +31,36 @@ public class Question{
 		return this.OptionC;
 	}
 	
-	public String getOptionD(){
+	public String getOptionD() {
 		return this.OptionD;
 	}
 	
 	public String getCorrectOption() {
 		return this.CorrectOption;
+	}
+	
+	public void setQuestion(String Question) {
+		this.Question = Question;
+	}
+	
+	public void setOptionA(String OptionA) {
+		this.OptionA = OptionA;
+	}
+	
+	public void setOptionB(String OptionB) {
+		this.OptionB = OptionB;
+	}
+	
+	public void setOptionC(String OptionC) {
+		this.OptionC = OptionC;
+	}
+	
+	public void setOptionD(String OptionD) {
+		this.OptionD = OptionD;
+	}
+	
+	public void setCorrectOption(String CorrectOption) {
+		this.CorrectOption = CorrectOption;
 	}
 	
 }

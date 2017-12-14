@@ -38,18 +38,18 @@ public class MainMenu extends JPanel{
 		
 		add(Start);
 		add(Exit);
-	
-		Exit.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				System.exit(0);
-			}
-		});
 		
 		Start.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Main.start = 1;
+				Main.startYes();
+			}
+		});
+		
+		Exit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
 			}
 		});
 		

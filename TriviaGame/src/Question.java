@@ -1,11 +1,11 @@
 public class Question{
-    public String Question; 
-	public String OptionA;
-	public String OptionB;
-	public String OptionC;
-	public String OptionD;
-	public String CorrectOption;
-	public GUI MyGUI;
+    private String Question; 
+	private String OptionA;
+	private String OptionB;
+	private String OptionC;
+	private String OptionD;
+	private String CorrectOption;
+	private GUI MyGUI;
 	
 	// Constructor for a new question
 	public Question (String Question, String OptionA, String OptionB, String OptionC, String OptionD, String CorrectOption){
@@ -15,7 +15,31 @@ public class Question{
 		this.OptionC = OptionC;
 		this.OptionD = OptionD;
 		this.CorrectOption = CorrectOption;
-
 	}
+	
+	public String getQuestion() {
+		return this.Question;
+	}
+	
+	public String getOptionA() {
+		return this.OptionA;
+	}
+	
+	public String getOptionB() {
+		return this.OptionB;
+	}
+	
+	public String getOptionC() {
+		return this.OptionC;
+	}
+	
+	public String getOptionD(){
+		return this.OptionD;
+	}
+	
+	public String getCorrectOption() {
+		return this.CorrectOption;
+	}
+	
 }
 	

@@ -22,20 +22,15 @@ public class QuestionPanel extends JPanel{
 	
 	public QuestionPanel(String Question, String OptionA, String OptionB, String OptionC, String OptionD, String CorrectOption) {
 		
-		AudioStream Audio;
+	//	AudioStream Audio;
 		
 		Dimension ButtonSize = new Dimension(200,100); // (width, height)
 		Font QuestionFont = new Font("Arial", Font.BOLD, 36);
 		Font ButtonFont = new Font("Arial", Font.BOLD, 16);
 		
-		try {
-			InputStream In = new FileInputStream("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/correct.wav");
-			Audio = new AudioStream(In);
-			
 		
-		
-		
-		
+		//InputStream In = new FileInputStream("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/correct.wav");
+		//	Audio = new AudioStream(In);
 		setLayout(new GridBagLayout()); 
 		GridBagConstraints d = new GridBagConstraints();
 		GridBagConstraints c = new GridBagConstraints();
@@ -98,10 +93,8 @@ public class QuestionPanel extends JPanel{
 					//System.out.println(event.getSource().toString());
 					if(check){
 						b.setBackground(Color.GREEN);
-						AudioPlayer.player.start(Audio);
-						Main.score++;
-					
-						
+					//	AudioPlayer.player.start(Audio);
+						Main.score++;	
 					}
 					
 					else {
@@ -117,8 +110,5 @@ public class QuestionPanel extends JPanel{
 		
 		
 	}
-		catch (IOException e) {
-			
-		}
-	}
+		
 }

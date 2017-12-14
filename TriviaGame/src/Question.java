@@ -1,3 +1,15 @@
+/**
+ * Project: TriviaGame
+ * 
+ * Description: Plays a game of trivia with the user 
+ * 
+ * File: Question.java: Contains constructor, accessor, and mutators for the Question objects.
+ * 
+ * @author Atif Mahmud
+ * @Date 2nd June 2017
+ * 
+ */
+
 public class Question {
     private String Question; 
 	private String OptionA;

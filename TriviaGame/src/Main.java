@@ -41,9 +41,9 @@ public class Main extends JFrame {
 		 	
 			// One case where we need the try-catch block is if the file doesn't exist	
 		 	try {
-				FileReader QuestionFile = new FileReader ("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/QuestionBank.txt");	
+				FileReader QuestionFile = new FileReader ("E:/Programming/TriviaGame/TriviaGame/src/QuestionBank.txt");	
 				BufferedReader Reader = new BufferedReader(QuestionFile);
-				FileReader LineReader = new FileReader("D:/Serious/Academic/Programming and Software/Java/TriviaGame/TriviaGame/src/QuestionBank.txt");
+				FileReader LineReader = new FileReader("E:/Programming/TriviaGame/TriviaGame/src/QuestionBank.txt");
 				
 				// Find out why doing LineReader on QuestionFile gave Question Fields as null
      		    // To count the number of questions in the text file, Source: https://stackoverflow.com/questions/453018/number-of-lines-in-a-file-in-java
@@ -102,12 +102,12 @@ public class Main extends JFrame {
 		 GameGUI.repaint();
 		 GameGUI.revalidate();
 		 
-		 for (int i =0; i < 12; i++) {
+		 for (int i =0; i < 15; i++) {
 			run = true;
 			while(run) {
 				card.show(Content, Integer.toString(i));
 				if(run == false) {
-					Thread.sleep(5000);
+					Thread.sleep(500);
 					break;
 				}
 				continue;

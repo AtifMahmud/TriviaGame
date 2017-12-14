@@ -1,3 +1,15 @@
+/**
+ * Project: TriviaGame
+ * 
+ * Description: Plays a game of trivia with the user 
+ * 
+ * File: MainMenu.java: Part of "View" of the MVC framework. Builds a JPanel for the opening screen.
+ * 
+ * @author Atif Mahmud
+ * @Date 2nd June 2017
+ * 
+ */
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;

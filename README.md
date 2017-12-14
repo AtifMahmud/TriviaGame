@@ -1,4 +1,16 @@
 # TriviaGame
-Program that plays the game of Trivia with the user
 
-This project is still in the development stage, but has a funcitonal demo. To try this out yourself, clone it onto your device and run the project. (JRE Required)
+## Description
+A Java Application that plays a game of trivia with the user
+
+## Milestones
+
+### June 2017
+Questions displayed on Terminal. User input on terminal
+
+### August 2017
+Functioning GUI prototype
+
+### December 2017
+Codacy Code Review: 17 total issues, B grade. 
+

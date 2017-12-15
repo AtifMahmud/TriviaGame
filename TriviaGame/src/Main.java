@@ -26,21 +26,22 @@ public class Main extends JFrame {
 	private static volatile int start = 0;
 	private static boolean run;
 	
-	ArrayList <Question> QuestionList = new ArrayList <Question>(); 
-	ArrayList <QuestionPanel> PanelList = new ArrayList <QuestionPanel>();
-	CardLayout card = new CardLayout();
-	MainMenu MainMenu = new MainMenu();
-	GUI GameGUI = new GUI();
+	private static ArrayList <Question> QuestionList = new ArrayList <Question>(); 
+	private static ArrayList <QuestionPanel> PanelList = new ArrayList <QuestionPanel>();
+	private static CardLayout card = new CardLayout();
+	private static MainMenu MainMenu = new MainMenu();
+	private static GUI GameGUI = new GUI();
+	private static JPanel Content = new JPanel();
+	
 	
 	public static void main (String [] args)  throws Exception {
+		Content.setLayout(card);
 		addToArray();
 		buildPanel();
 		playGameLoop();	
 		
 		System.exit(0);
 		 
-		// This will ensure main runs once the mouse event is detected 
-		// Event Dispatching Thread: Figure out what it is for
 		SwingUtilities.invokeLater(new Runnable(){
 			@Override
 			public void run(){
@@ -75,7 +76,7 @@ public class Main extends JFrame {
 		    LineNumber.close();                                           
 		
 			for (int j=0; j < numQuestions; j++){ 
-				Question NewQuestion;
+				Question NewQuestion = null;
 				
 				NewQuestion.setQuestion(Reader.readLine()); 
 				NewQuestion.setOptionA(Reader.readLine());
@@ -95,9 +96,6 @@ public class Main extends JFrame {
 	
 	
 	private static void buildPanel() {
-		
-		JPanel Content = new JPanel();
-		Content.setLayout(card);
 		 		 
 		for (int i=0; i < QuestionList.size(); ++i) {
 			Question QuestionForPanel = QuestionList.get(i);
@@ -113,7 +111,7 @@ public class Main extends JFrame {
 	}
 	
 	
-	private static void playGameLoop() {
+	private static void playGameLoop() throws Exception {
 		while (start == 0) {
 			Thread.sleep(500);
 			if(start != 0) break;

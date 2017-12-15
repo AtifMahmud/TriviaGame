@@ -18,7 +18,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.awt.event.*;
 import java.awt.event.ActionEvent;
 
@@ -43,7 +43,7 @@ public class QuestionPanel extends JPanel{
 		QuestionLabel.setFont(QuestionFont);
 		setBackground(Color.WHITE);
 		
-		ArrayList <JButton> ButtonList = new ArrayList<JButton>();
+		HashMap <String, JButton> buttons = new HashMap<String, JButton>();
 		
 		this.Question = Question;
 		this.OptionA = OptionA;
@@ -57,12 +57,10 @@ public class QuestionPanel extends JPanel{
 		JButton C = new JButton(OptionC);
 		JButton D = new JButton(OptionD);
 		
-		ButtonList.add(A);
-		ButtonList.add(B);
-		ButtonList.add(C);
-		ButtonList.add(D);
-
-		customizeButtons(ButtonList);
+		buttons.put("A", A);
+		buttons.put("B", B);
+		buttons.put("C", C);
+		buttons.put("D", D);
 		
 		c.gridx = 0;
 		c.gridy = 0;
@@ -76,24 +74,22 @@ public class QuestionPanel extends JPanel{
 		c.gridy++;
 		add(D, c);
 		
+		customizeButtons(buttons);		
 	}
 	
-	private static void customizeButtons(ArrayList <JButton> ButtonList) {
+	private static void customizeButtons(HashMap <String, JButton> buttons) {
 		
-		for(int i=0; i < ButtonList.size(); ++i) {
-			JButton b = ButtonList.get(i);
-			b.setBackground(Color.LIGHT_GRAY);
-			b.setPreferredSize(ButtonSize);
-			b.setFont(ButtonFont);
+		for(HashMap.Entry<String, JButton> entry: buttons.entrySet()) { 
+			
+			String name = entry.getKey();
+			JButton b = entry.getValue();
+			String src = b.getName();
+			
+			boolean check = name.equals(src);
 			
 			b.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent event) {
-					
-					boolean check = (i == 0 && Correct.contains("A")) || // line break
-							(i == 1 && Correct.contains("B")) || //  line break
-							(i == 2 && Correct.contains("C")) || // line break
-							(i == 3 && Correct.contains("D")); //  line break
 					
 					if(check){
 						b.setBackground(Color.GREEN);
@@ -107,7 +103,6 @@ public class QuestionPanel extends JPanel{
 					Main.setRun(false);
 				}
 			});
-		
 		}
 	}
 }

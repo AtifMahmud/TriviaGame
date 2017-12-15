@@ -24,6 +24,6 @@ public class GUI extends JFrame {
 		setSize(new Dimension(1920,1080));
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setDefaultLookAndFeelDecorated(false);
-		setIconImage(new ImageIcon("question_mark1600.png").getImage());
+		setIconImage(new ImageIcon("\"E:/Programming/TriviaGame/TriviaGame/src/question_mark1600.png").getImage());
 	}
 }

@@ -66,9 +66,9 @@ public class Main extends JFrame {
 	private static void addToArray() {
 		
 	 	try {
-			FileReader QuestionFile = new FileReader ("QuestionBank.txt");	
+			FileReader QuestionFile = new FileReader ("E:/Programming/TriviaGame/TriviaGame/src/QuestionBank.txt");	
 			BufferedReader Reader = new BufferedReader(QuestionFile);
-			FileReader LineReader = new FileReader("QuestionBank.txt");
+			FileReader LineReader = new FileReader("E:/Programming/TriviaGame/TriviaGame/src/QuestionBank.txt");
 			
 			LineNumberReader LineNumber = new LineNumberReader(LineReader);	
 			LineNumber.skip(Long.MAX_VALUE);                               // Not sure why this line here; ask someone
@@ -76,15 +76,8 @@ public class Main extends JFrame {
 		    LineNumber.close();                                           
 		
 			for (int j=0; j < numQuestions; j++){ 
-				Question NewQuestion = null;
-				
-				NewQuestion.setQuestion(Reader.readLine()); 
-				NewQuestion.setOptionA(Reader.readLine());
-				NewQuestion.setOptionB(Reader.readLine());
-				NewQuestion.setOptionC(Reader.readLine());
-				NewQuestion.setOptionD(Reader.readLine());
-				QuestionList.add(NewQuestion);
-				
+				Question NewQuestion = new Question(Reader.readLine(), Reader.readLine(), Reader.readLine(), Reader.readLine(), Reader.readLine(), Reader.readLine());
+				QuestionList.add(NewQuestion);	
 			}
 			
 		} catch (IOException e){

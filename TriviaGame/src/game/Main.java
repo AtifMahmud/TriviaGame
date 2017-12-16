@@ -118,7 +118,7 @@ public class Main extends JFrame {
 			while(run) {
 				card.show(Content, Integer.toString(i));
 				if(run) {
-					
+					System.out.println("void");
 				}
 				
 				else {

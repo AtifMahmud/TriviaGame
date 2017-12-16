@@ -89,15 +89,15 @@ public class QuestionPanel extends JPanel{
 			
 			String name = entry.getKey();
 			JButton b = entry.getValue();
-			String src = b.getName();
-			
-			boolean check = name.equals(src);
 			
 			b.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent event) {
 					
-					if(check){
+					System.out.println(name);
+					System.out.println(((JButton) event.getSource()).getName());
+					
+					if(name.equals(((JButton) event.getSource()).getName())){
 						b.setBackground(Color.GREEN);
 						Main.incrementScore();	
 					}
